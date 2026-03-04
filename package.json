@@ -1,0 +1,33 @@
+{
+  "name": "domestictouristpassport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "dev": "tsc-watch --onSuccess \"node dist/server.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PpKamanga/DomesticTouristPassport.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PpKamanga/DomesticTouristPassport/issues"
+  },
+  "homepage": "https://github.com/PpKamanga/DomesticTouristPassport#readme",
+  "devDependencies": {
+    "@tsconfig/node24": "^24.0.4",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.1",
+    "tsc-watch": "^7.2.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
