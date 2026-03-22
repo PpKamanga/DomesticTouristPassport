@@ -24,9 +24,16 @@ app.get("/api/destinations", (req, res) => {
 // POST visits
 app.post("/api/visits", (req, res) => {
     const { destinationId, rating } = req.body;
+    //Checking if destination exists
+    const destination = destinations.find(d => d.id === destinationId);
+    if (!destination) {
+        return res.status(404).json({ message: "Destination not found" });
+    }
+    // Checking rating
     if (!destinationId || !rating) {
         return res.sendStatus(400).json({ message: "destinationId and rating are requited" });
     }
+    // Creating Visit
     const visit = {
         id: visits.length + 1,
         destinationId,
