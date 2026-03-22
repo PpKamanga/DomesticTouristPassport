@@ -6,8 +6,14 @@ app.use(express.json()); // allows POST requests with JSON
 
 // in memory data storage
 let destinations = [
-{id: 1, name: "Baltimore Zoo", city: "Baltimore"},
-{id: 2, name: "Fort McHenry", city: "Baltimore" }
+{id: 1, name: "Maryland Zoo", city: "Baltimore"},
+{id: 2, name: "Everyman Theatre", city: "Baltimore" },
+{id: 3, name: "Walter's Museum of Art", city: "Baltimore"},
+{id: 4, name: "Baltimore Museum of Art", city: "Baltimore"},
+{id: 5, name: "Baltimore Museum of Industry", city: "Baltimore"},
+{id: 6, name: "Medieval Times", city: "Baltimore"},
+{id: 7, name: "Baltimore National Aquarium", city: "Baltimore"},
+{id: 8, name: "Maryland Science Center", city: "Baltimore"},
 ];
 
 let visits: any[] = []; // empty array for storing visits
@@ -21,6 +27,23 @@ app.get("/", (req,res) => {
 app.get("/api/destinations",(req,res) => {
   res.json(destinations);
 });
+
+// GET visits
+app.get("/api/destinations",(req,res) => {
+  res.json(visits);
+});
+
+// GET by ID
+app.get("/api/visits/:id", (req, res) => {
+  const visitId = parseInt (req.params.id);
+
+  const visit = visits.find((v) => v.id === visitId);
+
+  if (!visit) {
+    return res.status(404).json({ error: "visit not found"});
+  }
+  res.json(visit);
+})
 
 // POST visits
 app.post("/api/visits", (req,res) => {
