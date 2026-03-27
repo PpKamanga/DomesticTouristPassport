@@ -1,10 +1,17 @@
+// Import Express Framework
 import express from "express";
+
+// Create Express Application
 const app = express();
 
-// middleware
+// Middleware
+
+//Enable JSON parsing for incoming requests
 app.use(express.json()); // allows POST requests with JSON
 
-// in memory data storage
+// In Memory Data Storage
+
+// List of tourist destinations
 let destinations = [
 {id: 1, name: "Maryland Zoo", city: "Baltimore"},
 {id: 2, name: "Everyman Theatre", city: "Baltimore" },
@@ -16,66 +23,125 @@ let destinations = [
 {id: 8, name: "Maryland Science Center", city: "Baltimore"},
 ];
 
-let visits: any[] = []; // empty array for storing visits
+// Array to store user visits
+let visits: any[] = []; 
 
-// Root route
+// Root Route
+
+// Basic route to confirm server is running
 app.get("/", (req,res) => {
   res.send("Welcome to The Domestic Tourist Passport Project Alpha!!");
 });
 
-// GET destinations
+// GET Routes
+
+// Retrieve (GET) all available destinations
 app.get("/api/destinations",(req,res) => {
   res.json(destinations);
 });
 
-// GET visits
-app.get("/api/destinations",(req,res) => {
-  res.json(visits);
+// Retrieve (GET) all visits and total footprints
+app.get("/api/visits",(req,res) => {
+  // Calculate total footprints earned
+  const totalFootprints = visits.reduce((sum, v) => sum + v.footprints, 0);
+
+  // Return visits along with total footprints
+  res.json({
+    visits,
+    totalFootprints
+  });
 });
 
-// GET by ID
+// Retrieve (GET) a specific visit by ID
 app.get("/api/visits/:id", (req, res) => {
+  // Convert ID from string to number
   const visitId = parseInt (req.params.id);
 
+  // Find the visit in the array
   const visit = visits.find((v) => v.id === visitId);
 
+  // If visit does not exist, return error
   if (!visit) {
     return res.status(404).json({ error: "visit not found"});
   }
-  res.json(visit);
-})
 
-// POST visits
+  // Return the found visit
+  res.json(visit);
+});
+
+// POST Routes
+
+// Record a new visit
 app.post("/api/visits", (req,res) => {
-  const {destinationId, rating } = req.body;
+  // Extract data from request body
+  const {destinationId, rating, comment } = req.body;
+
+  // Validation
+
+  // Check required fields
+  if (!destinationId === undefined || rating === undefined) {
+    return res.status(400).json({ message: "destinationId and rating are required"});
+  }
+
+  // Convert inputs to numbers
+  const destId = Number(destinationId);
+  const visitRating = Number(rating);
+
+  // Ensure rating is a valid number
+  if (isNaN(visitRating) || visitRating <= 0) {
+    return res.status(400).json({ message: "Rating must be a positive number"});
+  }
+
+  //Ensure rating is within valid range
+  if (visitRating < 1 || visitRating > 5) {
+    return res.status(400).json({ message: "Rating must be between 1 and 5"});
+  }
 
   //Checking if destination exists
-  const destination = destinations.find(d => d.id === destinationId);
+  const destination = destinations.find(d => d.id === destId);
   if (!destination) {
   return res.status(404).json({ message: "Destination not found"});
 }
-  // Checking rating
-  if (!destinationId || !rating) {
-    return res.sendStatus(400).json({message: "destinationId and rating are requited"});
-  }
-// Creating Visit
+
+// Business Logic
+
+// Calculate footprints based on rating
+const footprints = visitRating * 10;
+
+// Assign badge based on footprints
+let badge = "First Step";
+if (footprints >= 20) badge = "Traveler";
+if (footprints >= 40) badge = "Explorer";
+if (footprints >= 50) badge = "Adventurer";
+if (footprints >= 80) badge = "Voyager";
+if (footprints >= 100) badge = "Trailblazer";
+
+// Create Visit 
   const visit = {
     id: visits.length + 1,
-    destinationId,
-    rating,
-    footprints: rating * 10, // simple reward calculation
+    destinationId: destId,
+    rating: visitRating,
+    comment: comment || "", // Optional user feedback
+    footprints,
+    badge,
     date: new Date()
   };
 
+// Store visit in memory
  visits.push(visit);
 
-  res.status(201).json(visit);
+ // Response
+
+ // Return confirmation and visit data
+  res.status(201).json({
+    message: "Visit recorded successfully",
+    visit
+  });
 });
 
-app.get("/api/visits", (req, res) => {
-  res.json(visits);
-});
+// Start Server
 
+// Run server on port 3000
 app.listen(3000, () => {
   console.log('Express is running on 3000');
 });
