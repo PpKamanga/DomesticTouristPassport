@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 // Create Express Application
 const app = (0, express_1.default)();
+const PORT = process.env.PORT || 3000;
 // Middleware
 //Enable JSON parsing for incoming requests
 app.use(express_1.default.json()); // allows POST requests with JSON
@@ -119,6 +120,6 @@ app.post("/api/visits", (req, res) => {
 });
 // Start Server
 // Run server on port 3000
-app.listen(3000, () => {
-    console.log('Express is running on 3000');
+app.listen(PORT, () => {
+    console.log('Express is running on ${PORT}');
 });

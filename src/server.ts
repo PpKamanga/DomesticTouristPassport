@@ -4,6 +4,8 @@ import express from "express";
 // Create Express Application
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 // Middleware
 
 //Enable JSON parsing for incoming requests
@@ -142,6 +144,6 @@ if (footprints >= 100) badge = "Trailblazer";
 // Start Server
 
 // Run server on port 3000
-app.listen(3000, () => {
-  console.log('Express is running on 3000');
+app.listen(PORT, () => {
+  console.log('Express is running on ${PORT}');
 });
