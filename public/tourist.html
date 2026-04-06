@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tourist Dashboard - Domestic Tourist Passport</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Domestic Tourist Passport</h1>
+
+    <p id="userInfo"></p>
+    <button onclick="logout()">Logout</button>
+
+    <h2>Available Destinations</h2>
+    <button onclick="loadDestinations()">Refresh Destinations</button>
+    <ul id="destinations"></ul>
+
+    <h2>Record a Visit</h2>
+    <form id="visitForm">
+      <label for="destinationId">Destination:</label>
+      <select id="destinationId" required></select>
+
+      <label for="rating">Rating (1-5):</label>
+      <input type="number" id="rating" min="1" max="5" required />
+
+      <label for="comment">Comment:</label>
+      <input type="text" id="comment" />
+
+      <button type="submit">Submit Visit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <h2>View Visits</h2>
+    <button onclick="loadVisits()">Load Visits</button>
+    <ul id="visits"></ul>
+    <p id="totalFootprints"></p>
+
+    <script src="tourist.js"></script>
+  </body>
+</html>

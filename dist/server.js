@@ -1,16 +1,56 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Import Express Framework
 const express_1 = __importDefault(require("express"));
+const path = __importStar(require("path"));
 // Create Express Application
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
+const publicPath = path.join(process.cwd(), "public");
 // Middleware
 //Enable JSON parsing for incoming requests
 app.use(express_1.default.json()); // allows POST requests with JSON
+app.use(express_1.default.static(publicPath));
+// Root Route (Load Frontend)
+app.get("/", (_req, res) => {
+    res.sendFile(path.join(publicPath, "login.html"));
+});
 // In Memory Data Storage
 // List of tourist destinations
 let destinations = [
@@ -25,11 +65,11 @@ let destinations = [
 ];
 // Array to store user visits
 let visits = [];
-// Root Route
-// Basic route to confirm server is running
-app.get("/", (req, res) => {
-    res.send("Welcome to The Domestic Tourist Passport Project Alpha!!");
-});
+let users = [
+    { id: 1, username: "tourist1", password: "tour123", role: "tourist" },
+    { id: 2, username: "admin1", password: "admin123", role: "admin" }
+];
+// API Route
 // GET Routes
 // Retrieve (GET) all available destinations
 app.get("/api/destinations", (req, res) => {
@@ -38,7 +78,7 @@ app.get("/api/destinations", (req, res) => {
 // Retrieve (GET) all visits and total footprints
 app.get("/api/visits", (req, res) => {
     // Calculate total footprints earned
-    const totalFootprints = visits.reduce((sum, v) => sum + v.footprints, 0);
+    const totalFootprints = visits.reduce((sum, visit) => sum + visit.footprints, 0);
     // Return visits along with total footprints
     res.json({
         visits,
@@ -65,7 +105,7 @@ app.post("/api/visits", (req, res) => {
     const { destinationId, rating, comment } = req.body;
     // Validation
     // Check required fields
-    if (!destinationId === undefined || rating === undefined) {
+    if (destinationId === undefined || rating === undefined) {
         return res.status(400).json({ message: "destinationId and rating are required" });
     }
     // Convert inputs to numbers
@@ -118,8 +158,32 @@ app.post("/api/visits", (req, res) => {
         visit
     });
 });
+app.post("/api/login", (req, res) => {
+    const { username, password, role } = req.body;
+    if (!username || !password || !role) {
+        return res.status(400).json({
+            message: "Username, password, and role are required"
+        });
+    }
+    const user = users.find(u => u.username === username &&
+        u.password === password &&
+        u.role === role);
+    if (!user) {
+        return res.status(401).json({
+            message: "Invalid credentials"
+        });
+    }
+    res.json({
+        message: "Login successful",
+        user: {
+            id: user.id,
+            username: user.username,
+            role: user.role
+        }
+    });
+});
 // Start Server
 // Run server on port 3000
 app.listen(PORT, () => {
-    console.log('Express is running on ${PORT}');
+    console.log(`Express is running on ${PORT}`);
 });
