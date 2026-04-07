@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Record Visit</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <h1>Record a Visit</h1>
+
+      <div class="top-right">
+        <button onclick="goBack()">Back</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <h2 style="text-align:center; margin-top:30px;">Submit Your Visit</h2>
+
+    <form id="visitForm" style="max-width:400px; margin: 30px auto;">
+      <label for="destinationId">Destination:</label>
+      <select id="destinationId" required></select>
+
+      <label for="rating">Rating (1-5):</label>
+      <input type="number" id="rating" min="1" max="5" required />
+
+      <label for="comment">Comment:</label>
+      <input type="text" id="comment" />
+
+      <button type="submit">Submit Visit</button>
+    </form>
+
+    <p id="message" style="text-align:center;"></p>
+
+    <script src="visit.js"></script>
+  </body>
+</html>
