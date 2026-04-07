@@ -1,94 +1,171 @@
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  margin: 30px;
-  background-color: #f7f9fc;
-  color: #222;
+  background-color: #f4f4f4;
 }
 
-h1 {
+.container {
+  max-width: 600px;
+  margin: 50px auto;   /* centers horizontally */
+  text-align: center;  /* centers text */
+}
+
+h1, h2 {
   text-align: center;
-  color: #065f46;
-  margin-bottom: 30px;
 }
 
-h2 {
-  color: #047857;
-  margin-top: 30px;
-  margin-bottom: 15px;
+form, ul {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 20px auto;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 15px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 button {
-  background-color: #059669;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 15px;
+  background-color: #066120;
   color: white;
   border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  margin-bottom: 15px;
 }
 
 button:hover {
-  background-color: #047857;
-}
-
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-}
-
-label {
-  display: block;
-  margin-top: 12px;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 14px;
-  box-sizing: border-box;
+  background-color: #066120;
 }
 
 ul {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  list-style-type: none;
-  max-width: 700px;
+  list-style: none;
+  padding: 0;
 }
 
-ul li {
+li {
   padding: 10px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-ul li:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid #eee;
 }
 
 p {
   margin-top: 10px;
 }
-
-#message,
-#loginMessage {
-  font-weight: bold;
-  color: #065f46;
+.login-box {
+  width: 300px;
+  margin: 0 auto;
+}
+.dashboard-container {
+  max-width: 500px; 
+  margin: 40px auto;
+  text-align: center;
 }
 
-#totalFootprints,
-#adminTotalVisits,
-#adminTotalFootprints,
-#adminAverageRating {
+.dashboard-page {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-container form,
+.dashboard-container ul {
+  width: 100%;
+}
+.attractions-section {
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 2rem;
   font-weight: bold;
-  color: #065f46;
+  text-decoration: underline;
+  margin: 0;
+}
+
+.section-header p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px 25px;
+  justify-items: center;
+}
+
+.attraction-card {
+  text-align: center;
+  width: 100%;
+  max-width: 260px;
+}
+
+.attraction-card img {
+  width: 240px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 30px;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.attraction-card h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #2e7d32; /* nice green like your theme */
+  color: white;
+}
+
+.top-bar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.top-right p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.top-right button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  color: #2e7d32;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top-right button:hover {
+  background-color: #f1f1f1;
 }

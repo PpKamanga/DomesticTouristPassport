@@ -5,14 +5,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Domestic Tourist Passport</h1>
+   <div class="top-bar">
+  <h1>Domestic Tourist Passport</h1>
 
+  <div class="top-right">
     <p id="userInfo"></p>
     <button onclick="logout()">Logout</button>
+  </div>
+</div>
 
-    <h2>Available Destinations</h2>
-    <button onclick="loadDestinations()">Refresh Destinations</button>
-    <ul id="destinations"></ul>
+  <section class="attractions-section">
+   <div class="section-header">
+    <h2>Tourist Attractions</h2>
+    <p id="total-count">Total Tourist Attractions: 0</p>
+  </div>
+
+  <div class="attractions-grid" id="destinations"></div>
+</section>
+
+<button onclick="loadDestinations()">Refresh Destinations</button>
 
     <h2>Record a Visit</h2>
     <form id="visitForm">

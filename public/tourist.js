@@ -15,16 +15,25 @@ function loadDestinations() {
   fetch("/api/destinations")
     .then(res => res.json())
     .then(data => {
-      const list = document.getElementById("destinations");
+      const grid = document.getElementById("destinations");
       const select = document.getElementById("destinationId");
+      const totalCount = document.getElementById("total-Count");
 
-      list.innerHTML = "";
+      grid.innerHTML = "";
       select.innerHTML = "";
 
+      if (totalCount) {
+        totalCount.textContent = `Total Tourist Attractions: ${data.length}`;
+      }
+
       data.forEach(d => {
-        const li = document.createElement("li");
-        li.textContent = `${d.name} - ${d.city}`;
-        list.appendChild(li);
+        const card = document.createElement("div");
+        card.className = "attraction-card";
+        card.innerHTML = `
+          <img src="https://via.placeholder.com/240x220?text=Destination" alt="${d.name}">
+          <h3>${d.name}</h3>
+        `;
+        grid.appendChild(card);
 
         const option = document.createElement("option");
         option.value = d.id;
