@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Destination Details</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="top-bar">
+      <h1>Destination Details</h1>
+
+      <div class="top-right">
+        <button onclick="goBack()">Back</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="destination-page">
+      <img id="destinationImage" />
+
+      <h2 id="destinationName"></h2>
+      <p id="destinationCity"></p>
+
+      <button onclick="goToVisit()">Record Visit</button>
+    </div>
+
+    <script src="destination.js"></script>
+  </body>
+</html>

@@ -17,6 +17,7 @@ fetch("/api/destinations")
   .then(res => res.json())
   .then(data => {
     const select = document.getElementById("destinationId");
+    const selectedDestinationId = localStorage.getItem("selectedDestinationId");
 
     select.innerHTML = "";
 
@@ -24,9 +25,15 @@ fetch("/api/destinations")
       const option = document.createElement("option");
       option.value = d.id;
       option.textContent = `${d.name} (${d.city})`;
+
+      if (selectedDestinationId && Number(selectedDestinationId) === d.id) {
+        option.selected = true;
+      }
+
       select.appendChild(option);
     });
   })
+
   .catch(error => {
     console.error("Error loading destinations:", error);
   });
@@ -64,6 +71,7 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
         `${data.message}. You earned ${data.visit.footprints} Footprints and received the "${data.visit.badge}" badge.`;
 
       document.getElementById("visitForm").reset();
+      localStorage.removeItem("selectedDestinationId");
     })
     .catch(error => {
       console.error("Error submitting visit:", error);
