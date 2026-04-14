@@ -37,8 +37,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Import Express Framework
+require("dotenv/config");
+const db_1 = require("./db");
 const express_1 = __importDefault(require("express"));
 const path = __importStar(require("path"));
+if (db_1.pool) {
+    db_1.pool.query("SELECT NOW()")
+        .then(res => console.log("Database connected:", res.rows[0]))
+        .catch(err => console.error("Database connection error:", err));
+}
+else {
+    console.warn("DATABASE_URL is not set; skipping database connection test.");
+}
 // Create Express Application
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;

@@ -34,9 +34,12 @@ function loadComments() {
       console.log("All visits for comments:", data.visits);
       const commentsList = document.getElementById("adminCommentsList");
 
-      const commentedVisits = data.visits.filter(
-        visit => visit.comment && visit.comment.trim() !== ""
-      );
+     const commentedVisits = data.visits.filter(
+  visit =>
+    visit.comment &&
+    visit.comment.trim() !== "" &&
+    visit.comment !== "QR Check-In"
+);
 
       document.getElementById("adminCommentsCount").textContent = commentedVisits.length;
 

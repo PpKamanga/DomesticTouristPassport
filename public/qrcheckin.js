@@ -18,7 +18,7 @@ const destinationId = Number(params.get("destinationId"));
 
 document.getElementById("confirmQR").addEventListener("click", async () => {
   try {
-        
+
     const response = await fetch("/api/visits", {
       method: "POST",
       headers: {
@@ -28,7 +28,7 @@ document.getElementById("confirmQR").addEventListener("click", async () => {
       body: JSON.stringify({
         destinationId,
         rating: 0,
-        comment: ""|| "QR Check-In",
+        comment: "",
         username: currentUser.username
       })
     });

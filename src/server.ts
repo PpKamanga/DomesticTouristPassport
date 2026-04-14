@@ -1,6 +1,17 @@
 // Import Express Framework
+import "dotenv/config";
+
+import { pool } from "./db";
 import express from "express";
 import * as path from "path";
+
+if (pool) {
+  pool.query("SELECT NOW()")
+    .then(res => console.log("Database connected:", res.rows[0]))
+    .catch(err => console.error("Database connection error:", err));
+} else {
+  console.warn("DATABASE_URL is not set; skipping database connection test.");
+}
 
 // Create Express Application
 const app = express();
