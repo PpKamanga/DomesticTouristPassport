@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QR Check-In</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <h1>QR Check-In</h1>
+
+      <div class="top-right">
+        <button onclick="goBack()">Back</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="visit-container">
+  <h2>Confirm QR Check-In</h2>
+
+  <p id="qrMessage"></p>
+  <button id="confirmQR">Confirm Visit</button>
+</div>
+
+    <script src="qrcheckin.js"></script>
+  </body>
+</html>

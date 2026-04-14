@@ -102,22 +102,25 @@ app.get("/api/visits/:id", (req, res) => {
 // Record a new visit
 app.post("/api/visits", (req, res) => {
     // Extract data from request body
-    const { destinationId, rating, comment } = req.body;
+    const { destinationId, rating, comment, username } = req.body;
     // Validation
     // Check required fields
-    if (destinationId === undefined || rating === undefined) {
-        return res.status(400).json({ message: "destinationId and rating are required" });
+    if (destinationId === undefined) {
+        return res.status(400).json({
+            message: "destinationId is required"
+        });
     }
     // Convert inputs to numbers
     const destId = Number(destinationId);
     const visitRating = Number(rating);
     // Ensure rating is a valid number
-    if (isNaN(visitRating) || visitRating <= 0) {
-        return res.status(400).json({ message: "Rating must be a positive number" });
-    }
-    //Ensure rating is within valid range
-    if (visitRating < 1 || visitRating > 5) {
-        return res.status(400).json({ message: "Rating must be between 1 and 5" });
+    if (visitRating !== 0) {
+        if (isNaN(visitRating) || visitRating <= 0) {
+            return res.status(400).json({ message: "Rating must be a positive number" });
+        }
+        if (visitRating < 1 || visitRating > 5) {
+            return res.status(400).json({ message: "Rating must be between 1 and 5" });
+        }
     }
     //Checking if destination exists
     const destination = destinations.find(d => d.id === destId);
@@ -126,7 +129,10 @@ app.post("/api/visits", (req, res) => {
     }
     // Business Logic
     // Calculate footprints based on rating
-    const footprints = visitRating * 10;
+    let footprints = 0;
+    if (visitRating > 0 && comment && comment.trim() !== "") {
+        footprints = visitRating * 10;
+    }
     // Assign badge based on footprints
     let badge = "First Step";
     if (footprints >= 20)
@@ -144,11 +150,13 @@ app.post("/api/visits", (req, res) => {
         id: visits.length + 1,
         destinationId: destId,
         rating: visitRating,
-        comment: comment || "", // Optional user feedback
+        comment: comment ? comment.trim() : "",
+        username,
         footprints,
         badge,
         date: new Date()
     };
+    console.log("New visit saved:", visit);
     // Store visit in memory
     visits.push(visit);
     // Response
@@ -180,6 +188,24 @@ app.post("/api/login", (req, res) => {
             username: user.username,
             role: user.role
         }
+    });
+});
+app.get("/api/admin/analytics", (req, res) => {
+    const role = req.query.role;
+    if (role !== "admin") {
+        return res.status(403).json({ error: "Access denied" });
+    }
+    const totalVisits = visits.length;
+    const totalFootprints = visits.reduce((sum, visit) => sum + visit.footprints, 0);
+    const averageRating = visits.length > 0
+        ? visits.reduce((sum, visit) => sum + visit.rating, 0) / visits.length
+        : 0;
+    const activeUsers = new Set(visits.map((visit) => visit.username)).size;
+    res.json({
+        totalVisits,
+        totalFootprints,
+        averageRating,
+        activeUsers
     });
 });
 // Start Server

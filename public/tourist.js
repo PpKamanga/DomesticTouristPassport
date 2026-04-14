@@ -27,7 +27,7 @@ function loadDestinations() {
     .then(data => {
       const grid = document.getElementById("destinations");
       const select = document.getElementById("destinationId");
-      const totalCount = document.getElementById("total-Count");
+      const totalCount = document.getElementById("total-count");
 
       grid.innerHTML = "";
 
@@ -46,6 +46,9 @@ function loadDestinations() {
     <img src="${imageUrl}" alt="${d.name}">
     <h3>${d.name}</h3>
     <p>${d.city}</p>
+      <button class="qr-btn" onclick="event.stopPropagation(); goToQRCheckIn(${d.id})">
+    QR Check-In
+  </button>
   `;
 
   card.addEventListener("click", () => {
@@ -82,5 +85,51 @@ function goToVisitPage() {
   window.location.href = "visit.html";
 }
 
+function goToQRCheckIn(destinationId) {
+  window.location.href = `qrcheckin.html?destinationId=${destinationId}`;
+}
+
+function toggleVisits() {
+  const visitsSection = document.getElementById("visitsSection");
+
+  if (visitsSection.style.display === "none") {
+    visitsSection.style.display = "block";
+    loadVisits();
+  } else {
+    visitsSection.style.display = "none";
+  }
+}
+
 loadDestinations();
 loadFootprints();
+
+async function loadVisits() {
+  try {
+    const res = await fetch('/api/visits');
+    const data = await res.json();
+
+    const visitsList = document.getElementById('visitsList');
+
+    if (!data.visits || data.visits.length === 0) {
+      visitsList.innerHTML = "<p>No visits recorded yet.</p>";
+      return;
+    }
+
+   visitsList.innerHTML = `
+  <div class="visits-grid">
+    ${data.visits.map(v => `
+      <div class="visit-card">
+        <h3>Visit Record</h3>
+        <p><strong>Destination ID:</strong> ${v.destinationId}</p>
+        <p><strong>Rating:</strong> ${v.rating}</p>
+        <p><strong>Footprints:</strong> ${v.footprints}</p>
+        <p><strong>Comment:</strong> ${v.comment || "None"}</p>
+      </div>
+    `).join("")}
+  </div>
+`;
+
+  } catch (err) {
+    console.error(err);
+  }
+}

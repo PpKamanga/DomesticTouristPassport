@@ -5,20 +5,51 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="top-bar">
     <h1>Domestic Tourist Passport</h1>
 
+    <div class="top-right">
     <p id="userInfo"></p>
     <button onclick="logout()">Logout</button>
+    </div>
+  </div>
 
-    <h2>Admin Analytics Dashboard</h2>
-    <button onclick="loadAnalytics()">Load Analytics</button>
+  <section class="dashboard-summary">
+    <h2 style="text-align: center;">Admin Dashboard</h2>
+    <p>Welcome, Admin! Here you can view analytics about tourist visits and attractions.</p>
 
-    <p id="adminTotalVisits"></p>
-    <p id="adminTotalFootprints"></p>
-    <p id="adminAverageRating"></p>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <h3>Total Visits</h3>
+        <p id="adminTotalVisits">0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Total Footprints</h3>
+        <p id="adminTotalFootprints">0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Average Rating</h3>
+        <p id="adminAverageRating">0.00</p>
+      </div>
+
+        <div class="summary-card">
+          <h3>Active Users</h3>
+          <p id="adminActiveUsers">0</p>
+        </div>
+
+        <div class="summary-card" onclick="toggleComments()" style="cursor: pointer;">
+           <h3>Comments</h3>
+           <p id="adminCommentsCount">0</p>
+      </div>
+  </section>
+
+<section id="commentsSection" class="comment-section" style="display: none;">
+  <h2 style="text-align:center;">Tourist Comments</h2>
+  <div id="adminCommentsList" class="summary-cards"></div>
+</section>
 
     <script src="admin.js"></script>
-    </div>
   </body>
 </html>

@@ -54,7 +54,8 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
     body: JSON.stringify({
       destinationId: Number(destinationId),
       rating: Number(rating),
-      comment: comment
+      comment: comment,
+      username: currentUser.username
     })
   })
     .then(async res => {
@@ -68,7 +69,7 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
     })
     .then(data => {
       message.textContent =
-        `${data.message}. You earned ${data.visit.footprints} Footprints and received the "${data.visit.badge}" badge.`;
+        `Visit recorded successfully! You earned ${data.visit.footprints} Footprints and received the "${data.visit.badge}" badge.`;
 
       document.getElementById("visitForm").reset();
       localStorage.removeItem("selectedDestinationId");
