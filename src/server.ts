@@ -1,14 +1,14 @@
 // Import Express Framework
+import bcrypt from "bcrypt";
 import "dotenv/config";
-
 import { pool } from "./db";
 import express from "express";
 import * as path from "path";
 
 if (pool) {
   pool.query("SELECT NOW()")
-    .then(res => console.log("Database connected:", res.rows[0]))
-    .catch(err => console.error("Database connection error:", err));
+    .then((res: any) => console.log("Database connected:", res.rows[0]))
+    .catch((err: Error) => console.error("Database connection error:", err));
 } else {
   console.warn("DATABASE_URL is not set; skipping database connection test.");
 }
@@ -31,6 +31,49 @@ app.get("/", (_req, res) => {
   res.sendFile(path.join(publicPath, "login.html"));
 });
 
+app.post("/api/register", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    if (!username || !email || !password) {
+      return res.status(400).json({
+        message: "Username, email, and password are required"
+      });
+    }
+
+    const existingUser = await pool.query(
+      "SELECT id FROM users WHERE email = $1",
+      [email]
+    );
+
+    if (existingUser.rows.length > 0) {
+      return res.status(409).json({
+        message: "An account with that email already exists"
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    console.log("About to register:", { username, email });
+
+    const result = await pool.query(
+      `INSERT INTO users (username, email, password_hash, role)
+       VALUES ($1, $2, $3, 'tourist')
+       RETURNING id, username, email, role`,
+      [username, email, passwordHash]
+    );
+
+    res.status(201).json({
+      message: "Account created successfully",
+      user: result.rows[0]
+    });
+ } catch (error) {
+  console.error("Register error full:", error);
+  res.status(500).json({
+    message: "Server error during registration"
+  });
+}
+});
 // In Memory Data Storage
 
 // List of tourist destinations
@@ -45,13 +88,6 @@ let destinations = [
 {id: 8, name: "Maryland Science Center", city: "Baltimore"},
 ];
 
-// Array to store user visits
-let visits: any[] = []; 
-
-let users = [
-  {id: 1, username: "tourist1", password: "tour123", role: "tourist"},
-  { id: 2, username: "admin1", password: "admin123", role: "admin"}
-];
 
 // API Route
 
@@ -63,178 +99,231 @@ app.get("/api/destinations",(req,res) => {
 });
 
 // Retrieve (GET) all visits and total footprints
-app.get("/api/visits",(req,res) => {
-  // Calculate total footprints earned
-  const totalFootprints = visits.reduce(
-    (sum, visit) => sum + visit.footprints,
-    0
-  );
+app.get("/api/visits", async (_req, res) => {
+  try {
+    const visitsResult = await pool.query(
+      `SELECT
+         id,
+         destination_id AS "destinationId",
+         rating,
+         comment,
+         username,
+         footprints,
+         badge,
+         visit_date AS date
+       FROM visits
+       ORDER BY visit_date DESC`
+    );
 
-  // Return visits along with total footprints
-  res.json({
-    visits,
-    totalFootprints
-  });
+    const visits = visitsResult.rows;
+
+    const totalFootprints = visits.reduce(
+      (sum, visit) => sum + visit.footprints,
+      0
+    );
+
+    res.json({
+      visits,
+      totalFootprints
+    });
+  } catch (error) {
+    console.error("Error fetching visits:", error);
+    res.status(500).json({
+      message: "Failed to load visits"
+    });
+  }
 });
 
 // Retrieve (GET) a specific visit by ID
-app.get("/api/visits/:id", (req, res) => {
-  // Convert ID from string to number
-  const visitId = parseInt (req.params.id);
+app.get("/api/visits/:id", async (req, res) => {
+  try {
+    const visitId = parseInt(req.params.id);
 
-  // Find the visit in the array
-  const visit = visits.find((v) => v.id === visitId);
+    const result = await pool.query(
+      `SELECT
+         id,
+         destination_id AS "destinationId",
+         rating,
+         comment,
+         username,
+         footprints,
+         badge,
+         visit_date AS date
+       FROM visits
+       WHERE id = $1`,
+      [visitId]
+    );
 
-  // If visit does not exist, return error
-  if (!visit) {
-    return res.status(404).json({ error: "visit not found"});
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "visit not found" });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error("Error fetching visit:", error);
+    res.status(500).json({
+      message: "Failed to load visit"
+    });
   }
-
-  // Return the found visit
-  res.json(visit);
 });
 
 // POST Routes
 
 // Record a new visit
-app.post("/api/visits", (req,res) => {
-  // Extract data from request body
-  const {destinationId, rating, comment, username } = req.body;
+app.post("/api/visits", async (req, res) => {
+  try {
+    const { destinationId, rating, comment, username } = req.body;
 
-  // Validation
+    if (destinationId === undefined) {
+      return res.status(400).json({
+        message: "destinationId is required"
+      });
+    }
 
-  // Check required fields
-if (destinationId === undefined) {
-  return res.status(400).json({
-    message: "destinationId is required"
-  });
-}
+    if (!username) {
+      return res.status(400).json({
+        message: "username is required"
+      });
+    }
 
-  // Convert inputs to numbers
-  const destId = Number(destinationId);
-  const visitRating = Number(rating);
+    const destId = Number(destinationId);
+    const visitRating = Number(rating);
 
-  // Ensure rating is a valid number
-if (visitRating !== 0) {
-  if (isNaN(visitRating) || visitRating <= 0) {
-    return res.status(400).json({ message: "Rating must be a positive number"});
+    if (visitRating !== 0) {
+      if (isNaN(visitRating) || visitRating <= 0) {
+        return res.status(400).json({
+          message: "Rating must be a positive number"
+        });
+      }
+
+      if (visitRating < 1 || visitRating > 5) {
+        return res.status(400).json({
+          message: "Rating must be between 1 and 5"
+        });
+      }
+    }
+
+    const destination = destinations.find(d => d.id === destId);
+
+    if (!destination) {
+      return res.status(404).json({
+        message: "Destination not found"
+      });
+    }
+
+    let footprints = 0;
+
+    if (visitRating > 0 && comment && comment.trim() !== "") {
+      footprints = visitRating * 10;
+    }
+
+    let badge = "First Step";
+    if (footprints >= 20) badge = "Traveler";
+    if (footprints >= 40) badge = "Explorer";
+    if (footprints >= 50) badge = "Adventurer";
+    if (footprints >= 80) badge = "Voyager";
+    if (footprints >= 100) badge = "Trailblazer";
+
+    const result = await pool.query(
+      `INSERT INTO visits
+       (destination_id, rating, comment, username, footprints, badge)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       RETURNING
+         id,
+         destination_id AS "destinationId",
+         rating,
+         comment,
+         username,
+         footprints,
+         badge,
+         visit_date AS date`,
+      [destId, visitRating, comment ? comment.trim() : "", username, footprints, badge]
+    );
+
+    res.status(201).json({
+      message: "Visit recorded successfully",
+      visit: result.rows[0]
+    });
+  } catch (error) {
+    console.error("Error saving visit:", error);
+    res.status(500).json({
+      message: "Failed to save visit"
+    });
   }
-
-  if (visitRating < 1 || visitRating > 5) {
-    return res.status(400).json({ message: "Rating must be between 1 and 5"});
-  }
-}  
-
-  //Checking if destination exists
-  const destination = destinations.find(d => d.id === destId);
-  if (!destination) {
-  return res.status(404).json({ message: "Destination not found"});
-}
-
-// Business Logic
-
-// Calculate footprints based on rating
-let footprints = 0;
-
-if (visitRating > 0 && comment && comment.trim() !== "") {
-  footprints = visitRating * 10;
-}
-
-
-// Assign badge based on footprints
-let badge = "First Step";
-if (footprints >= 20) badge = "Traveler";
-if (footprints >= 40) badge = "Explorer";
-if (footprints >= 50) badge = "Adventurer";
-if (footprints >= 80) badge = "Voyager";
-if (footprints >= 100) badge = "Trailblazer";
-
-// Create Visit 
-  const visit = {
-    id: visits.length + 1,
-    destinationId: destId,
-    rating: visitRating,
-    comment: comment ? comment.trim() : "", 
-    username,
-    footprints,
-    badge,
-    date: new Date()
-  };
-  console.log("New visit saved:", visit);
-
-// Store visit in memory
- visits.push(visit);
-
- // Response
-
- // Return confirmation and visit data
-  res.status(201).json({
-    message: "Visit recorded successfully",
-    visit
-  });
 });
 
-app.post("/api/login", (req,res) => {
-  const { username, password, role} = req.body;
+app.post("/api/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  if (!username || !password || !role) {
-    return res.status(400).json({
-      message: "Username, password, and role are required"
-    });
-  }
-
-  const user = users.find(
-    u =>
-      u.username === username &&
-      u.password === password &&
-      u.role === role
-
-  );
-
-  if (!user) {
-    return res.status(401).json({
-      message: "Invalid credentials"
-    });
-  }
-
-  res.json({
-    message: "Login successful",
-    user: {
-      id: user.id,
-      username: user.username,
-      role: user.role
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required"
+      });
     }
-  })
-})
-app.get("/api/admin/analytics", (req, res) => {
+
+    const result = await pool.query(
+      "SELECT id, username, email, password_hash, role FROM users WHERE email = $1",
+      [email]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(401).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    const user = result.rows[0];
+
+    const passwordMatch = await bcrypt.compare(password, user.password_hash);
+
+    if (!passwordMatch) {
+      return res.status(401).json({
+        message: "Invalid email or password"
+      });
+    }
+
+    res.json({
+      message: "Login successful",
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({
+      message: "Server error during login"
+    });
+  }
+});
+
+app.get("/api/admin/analytics", async (req, res) => {
   const role = req.query.role;
 
   if (role !== "admin") {
     return res.status(403).json({ error: "Access denied" });
   }
 
-  const totalVisits = visits.length;
+  try {
+    const result = await pool.query(`
+      SELECT
+        COUNT(*)::int AS "totalVisits",
+        COALESCE(SUM(footprints), 0)::int AS "totalFootprints",
+        COALESCE(AVG(rating), 0)::float AS "averageRating",
+        COUNT(DISTINCT username)::int AS "activeUsers"
+      FROM visits
+    `);
 
-  const totalFootprints = visits.reduce(
-    (sum, visit) => sum + visit.footprints,
-    0
-  );
-
-  const averageRating =
-    visits.length > 0
-      ? visits.reduce((sum, visit) => sum + visit.rating, 0) / visits.length
-      : 0;
-
-  const activeUsers = new Set(
-    visits.map((visit) => visit.username)
-  ).size;
-
-  res.json({
-    totalVisits,
-    totalFootprints,
-    averageRating,
-    activeUsers
-  });
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error("Error loading analytics:", error);
+    res.status(500).json({
+      message: "Failed to load analytics"
+    });
+  }
 });
 
 // Start Server

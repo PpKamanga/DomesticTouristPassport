@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Visits</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <h1>My Visits</h1>
+
+      <div class="top-right">
+        <button onclick="goBack()">Back</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <h2 style="text-align:center; margin-top: 30px;">Your Recorded Visits</h2>
+
+    <div id="myVisitsContainer" class="attractions-grid"></div>
+
+    <p id="visitsMessage" style="text-align:center; margin-top:20px;"></p>
+
+    <script src="myvisits.js"></script>
+  </body>
+</html>

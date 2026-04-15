@@ -5,19 +5,17 @@ document.getElementById("loginForm").addEventListener("submit", loginUser);
 function loginUser(event) {
   event.preventDefault();
 
-  const usernameInput = document.getElementById("username");
+  const emailInput = document.getElementById("email");
   const passwordInput = document.getElementById("password");
-  const roleSelect = document.getElementById("role");
   const loginMessage = document.getElementById("loginMessage");
 
-  if (!usernameInput || !passwordInput || !roleSelect || !loginMessage) {
+  if (!emailInput || !passwordInput || !loginMessage) {
     console.error("Login form elements not found");
     return;
   }
 
-  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
-  const role = roleSelect.value;
 
   fetch("/api/login", {
     method: "POST",
@@ -25,9 +23,8 @@ function loginUser(event) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      username,
+      email,
       password,
-      role
     })
   })
     .then(async res => {

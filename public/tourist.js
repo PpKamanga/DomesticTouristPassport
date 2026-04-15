@@ -81,6 +81,9 @@ function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
 }
+function goToMyVisitsPage() {
+  window.location.href = "myvisits.html";
+}
 function goToVisitPage() {
   window.location.href = "visit.html";
 }

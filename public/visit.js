@@ -1,3 +1,5 @@
+console.log("visit.js loaded");
+
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 if (!currentUser || currentUser.role !== "tourist") {
@@ -57,6 +59,7 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
       comment: comment,
       username: currentUser.username
     })
+
   })
     .then(async res => {
       const data = await res.json();
@@ -69,7 +72,7 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
     })
     .then(data => {
       message.textContent =
-        `Visit recorded successfully! You earned ${data.visit.footprints} Footprints and received the "${data.visit.badge}" badge.`;
+        `Visit recorded successfully for ${data.visit.username}! You earned ${data.visit.footprints} Footprints and received the "${data.visit.badge}" badge.`;
 
       document.getElementById("visitForm").reset();
       localStorage.removeItem("selectedDestinationId");
