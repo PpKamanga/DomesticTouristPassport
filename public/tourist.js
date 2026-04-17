@@ -88,8 +88,8 @@ function goToVisitPage() {
   window.location.href = "visit.html";
 }
 
-function goToQRCheckIn(destinationId) {
-  window.location.href = `qrcheckin.html?destinationId=${destinationId}`;
+function goToQRPage() {
+  window.location.href = "qr.html";
 }
 
 function toggleVisits() {
