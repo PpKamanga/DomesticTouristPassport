@@ -41,7 +41,7 @@ let destinations = [
     id: 1,
     name: "Miss Shirley's Cafe",
     city: "Baltimore",
-    image: "images/miss shirleys cafe.jpg",
+    image: "images/miss-shirley's-cafe.jpg",
     description: "A cozy local café in Baltimore offering a welcoming atmosphere and a memorable neighborhood experience."
   },
   {

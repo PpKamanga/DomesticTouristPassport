@@ -10,11 +10,12 @@ document.getElementById("userInfo").textContent =
   `Logged in as ${currentUser.username} (${currentUser.role})`;
 
   const destinationImages = {
-  "Baltimore National Aquarium": "images/baltimore national aquarium.jpg",
-  "Maryland Zoo": "images/maryland zoo.jpg",
-  "Everyman Theatre": "images/everyman theatre.jpg",
-  "Walter's Museum of Art": "images/walters museum of art.jpg",
-  "Baltimore Museum of Industry": "images/baltimore museum of industry.jpg",
+    "Miss Shirley's Cafe": "images/miss-shirley's-cafe.jpg",
+  "Baltimore National Aquarium": "images/baltimore-national-aquarium.jpg",
+  "Maryland Zoo": "images/maryland-zoo.jpg",
+  "Everyman Theatre": "images/everyman-theatre.jpg",
+  "Walter's Museum of Art": "images/walters-museum-of-art.jpg",
+  "Baltimore Museum of Industry": "images/baltimore-museum-of-industry.jpg",
   "Maryland Science Center": "images/maryland science center.jpg",
   "Baltimore Museum of Art": "images/baltimore museum of art.jpg",
   "Medieval Times": "images/medieval times.jpg"
@@ -38,7 +39,7 @@ function loadDestinations() {
   data.forEach(d => {
   const imageUrl =
     destinationImages[d.name] ||
-    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80";
+    "images/default.jpg";
 
   const card = document.createElement("div");
   card.className = "attraction-card";
