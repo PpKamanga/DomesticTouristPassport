@@ -543,3 +543,145 @@ p {
   border: 1px solid #ddd;
    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
+.login-page {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #f4f8f4, #e8f0e8);
+  min-height: 100vh;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px 15px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #dfe6df;
+}
+
+.login-badge-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.login-badge-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background: white;
+  padding: 6px;
+}
+
+.login-header {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 18px 20px 20px;
+  margin-top: 15px;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.login-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.login-body {
+  padding: 28px 28px 32px;
+}
+
+.login-body h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #2e7d32;
+}
+
+.login-subtext {
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.login-body form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-body label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-body input {
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #cfd8cf;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.login-body input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.12);
+}
+
+.login-body button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.login-body button:hover {
+  background: #256628;
+}
+
+#message {
+  text-align: center;
+  margin-top: 16px;
+  color: #c62828;
+  font-weight: 500;
+}
+
+.register-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #2e7d32;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}

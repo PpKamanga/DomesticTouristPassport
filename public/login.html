@@ -5,33 +5,48 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 <body>
-  <div class="login-banner">
-    <img src="images/logo.png" alt="Domestic Tourist Passport Logo" class="site-logo">
-    <div class="banner-text">
+
+  <div class="login-wrapper">
+    <div class="login-card">
+
+  <div class="login-badge-area">
+    <img src="images/logo.png" alt="Domestic Tourist Passport Logo" class="login-badge-logo" />
+  </div>
+      <div class="login-header">
       <h1>Domestic Tourist Passport</h1>
-      <p>Explore destinations. Record visits. Earn footprints.</p>
+      <p>Tourist Access Portal</p>
     </div>
   </div>
+
+   <div class="login-body">
+          <h2>Welcome Back</h2>
+          <p class="login-subtext">
+            Sign in to explore attractions, record visits, and earn Footprints.
+          </p>
 
     <div class="login-container">
     <h2>Login</h2>
     
     <form id="loginForm">
       <label for="email">Email:</label>
-      <input type="email" id="email" required />
+      <input type="email" id="email" placeholder="Enter your email" required />
 
       <label for="password">Password:</label>
-      <input type="password" id="password" required />
+      <input type="password" id="password" placeholder="Enter your password" required />
 
 
       <button type="submit">Login</button>
     </form>
 
-    <p style="text-align: center; margin-top: 10px;">
-  Don’t have an account? <a href="register.html">Create one here</a>
-</p>
-
     <p id="loginMessage"></p>
+
+       <p class="register-text">
+            Don’t have an account?
+            <a href="register.html">Create Account</a>
+          </p>
+        </div>
+      </div>
+    </div>
 
     <script src="login.js"></script>
   </body>
