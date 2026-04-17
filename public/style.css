@@ -516,3 +516,16 @@ p {
 .details button:hover {
   background-color: #256428;
 }
+.details-btn {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.details-btn:hover {
+  opacity: 0.9;
+}
