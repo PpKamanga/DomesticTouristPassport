@@ -529,3 +529,20 @@ p {
 .details-btn:hover {
   opacity: 0.9;
 }
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+.logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
