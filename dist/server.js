@@ -70,9 +70,9 @@ app.get("/", (_req, res) => {
 let destinations = [
     {
         id: 1,
-        name: "Sponsor Cafe",
+        name: "Miss Shirley's Cafe",
         city: "Baltimore",
-        image: "images/sponsor-cafe.jpg",
+        image: "images/miss shirleys cafe.jpg",
         description: "A cozy local café in Baltimore offering a welcoming atmosphere and a memorable neighborhood experience."
     },
     {
