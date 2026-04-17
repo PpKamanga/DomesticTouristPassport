@@ -47,6 +47,7 @@ card.innerHTML = `
   <img src="${imageUrl}" alt="${d.name}">
   <h3>${d.name}</h3>
   <p>${d.city}</p>
+  <button class="details-btn">See Tourist Attraction</button>
 `;
 
 card.addEventListener("click", () => {
