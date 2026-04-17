@@ -47,6 +47,18 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
   const rating = document.getElementById("rating").value;
   const comment = document.getElementById("comment").value;
   const message = document.getElementById("message");
+  const cleanliness = document.getElementById("cleanliness").value;
+  const safety = document.getElementById("safety").value;
+  const accessibility = document.getElementById("accessibility").value;
+  const staff = document.getElementById("staff").value;
+  const value = document.getElementById("value").value;
+  const recommend = document.getElementById("recommend").value;
+
+  if (!cleanliness || !safety || !accessibility || !staff || !value || !recommend) {
+  visitMessage.textContent =
+    "Please complete the tourism standards survey to earn footprints.";
+  return;
+}
 
   fetch("/api/visits", {
     method: "POST",
