@@ -52,9 +52,8 @@ function loadDestinations() {
   `;
 
   card.addEventListener("click", () => {
-    localStorage.setItem("selectedDestinationId", d.id);
-    window.location.href = "destination-details.html";
-  });
+  window.location.href = `destination-details.html?destinationId=${d.id}`;
+});
 
   grid.appendChild(card);
 });
