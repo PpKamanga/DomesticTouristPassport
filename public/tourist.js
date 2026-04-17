@@ -50,7 +50,7 @@ card.innerHTML = `
   <button class="details-btn">See Tourist Attraction</button>
 `;
 
-card.addEventListener("click", () => {
+card.querySelector(".details-btn").addEventListener("click", () => {
   window.location.href = `destination-details.html?destinationId=${d.id}`;
 });
 
