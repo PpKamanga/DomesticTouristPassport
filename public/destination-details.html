@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Destination Details</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-bar">
+      <h1>Destination Details</h1>
+
+      <div class="top-right">
+        <button onclick="goBack()">Back</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="destination-card-page">
+      <div class="destination-card">
+        <img id="image" class="hero-image" src="" alt="Destination Image" />
+
+        <div class="overlay">
+          <h1 id="name"></h1>
+          <p id="city"></p>
+        </div>
+      </div>
+
+      <div class="details">
+        <p id="description"></p>
+        <button id="recordVisitBtn">Record Visit</button>
+      </div>
+    </div>
+
+    <script src="destination.js"></script>
+  </body>
+</html>

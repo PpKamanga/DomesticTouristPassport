@@ -53,7 +53,7 @@ function loadDestinations() {
 
   card.addEventListener("click", () => {
     localStorage.setItem("selectedDestinationId", d.id);
-    window.location.href = "destination.html";
+    window.location.href = "destination-details.html";
   });
 
   grid.appendChild(card);

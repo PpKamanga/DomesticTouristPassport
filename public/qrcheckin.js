@@ -14,37 +14,14 @@ function logout() {
 }
 
 const params = new URLSearchParams(window.location.search);
-const destinationId = Number(params.get("destinationId"));
+const destinationId = Number(params.get("id"));
 
-document.getElementById("confirmQR").addEventListener("click", async () => {
-  try {
-
-    const response = await fetch("/api/visits", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify({
-        destinationId,
-        rating: 0,
-        comment: "",
-        username: currentUser.username
-      })
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      document.getElementById("qrMessage").textContent =
-        "QR Check-In successful!";
-    } else {
-      document.getElementById("qrMessage").textContent =
-        data.message || "Error during check-in";
-    }
-  } catch (error) {
-    console.error("QR check-in error:", error);
+document.getElementById("confirmQR").addEventListener("click", () => {
+  if (!destinationId) {
     document.getElementById("qrMessage").textContent =
-      "Something went wrong during QR check-in.";
+      "Invalid destination. Please try again.";
+    return;
   }
+
+  window.location.href = `destination-details.html?id=${destinationId}`;
 });
