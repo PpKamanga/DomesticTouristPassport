@@ -69,6 +69,12 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
       destinationId: Number(destinationId),
       rating: Number(rating),
       comment: comment,
+      cleanliness: Number(cleanliness),
+      safety: Number(safety),
+      accessibility: Number(accessibility),
+      staff: Number(staff),
+      value: Number(value),
+      recommend: Number(recommend),
       username: currentUser.username
     })
 
