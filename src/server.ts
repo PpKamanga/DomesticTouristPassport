@@ -318,7 +318,24 @@ app.post("/api/visits", async (req, res) => {
       return dbUnavailable(res);
     }
 
-    const { destinationId, rating, comment, username } = req.body;
+    const { 
+       destinationId,
+       rating, 
+       comment,
+       cleanliness,
+       safety,
+       accessibility,
+       staff,
+       value,
+       recommend,
+       username 
+      } = req.body;
+
+    if (!cleanliness || !safety || !accessibility || !staff || !value || !recommend) {
+  return res.status(400).json({
+    message: "Tourism policy survey must be completed before awarding footprints."
+  });
+}
 
     if (destinationId === undefined) {
       return res.status(400).json({
