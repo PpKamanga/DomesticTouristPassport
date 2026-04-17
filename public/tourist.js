@@ -1,6 +1,7 @@
 console.log("tourist.js loaded");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let destinationsMap = {};
 
 if (!currentUser || currentUser.role !== "tourist") {
   window.location.href = "login.html";
@@ -10,7 +11,7 @@ document.getElementById("userInfo").textContent =
   `Logged in as ${currentUser.username} (${currentUser.role})`;
 
   const destinationImages = {
-    "Miss Shirley's Cafe": "images/miss shirleys cafe.jpg",
+  "Miss Shirley's Cafe": "images/miss shirleys cafe.jpg",
   "Baltimore National Aquarium": "images/baltimore national aquarium.jpg",
   "Maryland Zoo": "images/maryland zoo.jpg",
   "Everyman Theatre": "images/everyman theatre.jpg",
@@ -36,23 +37,25 @@ function loadDestinations() {
         totalCount.textContent = `Total Tourist Attractions: ${data.length}`;
       }
 
-  data.forEach(d => {
+data.forEach(d => {
+  destinationsMap[d.id] = d.name;
+
   const imageUrl =
     destinationImages[d.name] ||
     "images/default.jpg";
 
-const card = document.createElement("div");
-card.className = "attraction-card";
-card.innerHTML = `
-  <img src="${imageUrl}" alt="${d.name}">
-  <h3>${d.name}</h3>
-  <p>${d.city}</p>
-  <button class="details-btn">See Tourist Attraction</button>
-`;
+  const card = document.createElement("div");
+  card.className = "attraction-card";
+  card.innerHTML = `
+    <img src="${imageUrl}" alt="${d.name}">
+    <h3>${d.name}</h3>
+    <p>${d.city}</p>
+    <button class="details-btn">See Tourist Attraction</button>
+  `;
 
-card.querySelector(".details-btn").addEventListener("click", () => {
-  window.location.href = `destination-details.html?destinationId=${d.id}`;
-});
+  card.querySelector(".details-btn").addEventListener("click", () => {
+    window.location.href = `destination-details.html?destinationId=${d.id}`;
+  });
 
   grid.appendChild(card);
 });
@@ -121,8 +124,16 @@ async function loadVisits() {
     ${data.visits.map(v => `
       <div class="visit-card">
         <h3>Visit Record</h3>
-        <p><strong>Destination ID:</strong> ${v.destinationId}</p>
+        <p><strong>Destination:</strong> ${destinationsMap[v.destinationId] || "Unknown"}</p>
         <p><strong>Rating:</strong> ${v.rating}</p>
+
+        <p><strong>Cleanliness:</strong> ${v.cleanliness}</p>
+        <p><strong>Safety:</strong> ${v.safety}</p>
+        <p><strong>Accessibility:</strong> ${v.accessibility}</p>
+        <p><strong>Staff:</strong> ${v.staff}</p>
+        <p><strong>Value:</strong> ${v.value}</p>
+        <p><strong>Recommend:</strong> ${v.recommend}</p>
+
         <p><strong>Footprints:</strong> ${v.footprints}</p>
         <p><strong>Comment:</strong> ${v.comment || "None"}</p>
       </div>
