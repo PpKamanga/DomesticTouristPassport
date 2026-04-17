@@ -1,4 +1,4 @@
-console.log("destination.js loaded");
+console.log("destination-details.js loaded");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -15,25 +15,27 @@ function goBack() {
   window.location.href = "tourist.html";
 }
 
+// Get destination ID from URL parameters
 const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const destinationId = params.get("destinationId");
 
 fetch("/api/destinations")
   .then((res) => res.json())
   .then((destinations) => {
-    const destination = destinations.find((d) => d.id == id);
+    const destination = destinations.find((d) => d.id == destinationId);
 
     if (!destination) {
       document.querySelector(".destination-card-page").innerHTML =
         "<h2>Destination not found</h2>";
       return;
     }
-
+// Populate the page with destination details
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city;
     document.getElementById("description").textContent = destination.description;
     document.getElementById("image").src = destination.image;
 
+    // Add event listener to the "Record Visit" button
     document
       .getElementById("recordVisitBtn")
       .addEventListener("click", () => {
