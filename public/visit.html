@@ -25,11 +25,59 @@
     <label for="rating">Rating (1-5):</label>
     <input type="number" id="rating" min="1" max="5" required />
 
-    <label for="comment">Comment:</label>
-    <input type="text" id="comment" />
+    <label for="cleanliness">Cleanliness of the attraction:</label>
+    <select id="cleanliness" required>
+      <option value="">Select</option>
+      <option value="Excellent">Excellent</option>
+      <option value="Good">Good</option>
+      <option value="Fair">Fair</option>
+      <option value="Poor">Poor</option>
+    </select>
 
-    <button type="submit">Submit Visit</button>
-  </form>
+    <label for="safety">Did you feel safe during your visit?</label>
+    <select id="safety" required>
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+      <option value="Somewhat">Somewhat</option>
+      <option value="No">No</option>
+    </select>
+
+    <label for="accessibility">Accessibility (transport, signage, ease of entry):</label>
+    <select id="accessibility" required>
+      <option value="">Select</option>
+      <option value="Very Accessible">Very Accessible</option>
+      <option value="Moderately Accessible">Moderately Accessible</option>
+      <option value="Not Accessible">Not Accessible</option>
+    </select>
+
+    <label for="staff">Staff service quality (if applicable):</label>
+    <select id="staff" required>
+     <option value="">Select</option>
+     <option value="Excellent">Excellent</option>
+     <option value="Good">Good</option>
+     <option value="Poor">Poor</option>
+     <option value="Not Applicable">Not Applicable</option>
+   </select>
+
+   <label for="value">Was the experience worth the cost?</label>
+   <select id="value" required>
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+   </select>
+
+  <label for="recommend">Would you recommend this attraction?</label>
+  <select id="recommend" required>
+    <option value="">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+</select>
+
+  <label for="comment">Comment:</label>
+  <input type="text" id="comment" />
+
+  <button type="submit">Submit Visit</button>
+ </form>
 
   <p id="message"></p>
 </div>
