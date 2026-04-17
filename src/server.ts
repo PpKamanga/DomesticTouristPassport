@@ -245,6 +245,12 @@ app.get("/api/visits", async (_req, res) => {
          destination_id AS "destinationId",
          rating,
          comment,
+         cleanliness,
+         safety,
+         accessibility,
+         staff,
+         value,
+         recommend,
          username,
          footprints,
          badge,
@@ -287,6 +293,12 @@ app.get("/api/visits/:id", async (req, res) => {
          destination_id AS "destinationId",
          rating,
          comment,
+        cleanliness,
+         safety,
+         accessibility,
+         staff,
+         value,
+         recommend,
          username,
          footprints,
          badge,
@@ -372,11 +384,7 @@ app.post("/api/visits", async (req, res) => {
       });
     }
 
-    let footprints = 0;
-
-    if (comment && comment.trim() !== "") {
-      footprints = visitRating * 10;
-    }
+    const footprints = visitRating * 10;
 
     const countResult = await pool.query(
       `SELECT COUNT(*)::int AS visitCount
@@ -396,13 +404,32 @@ app.post("/api/visits", async (req, res) => {
 
     const result = await pool.query(
       `INSERT INTO visits
-       (destination_id, rating, comment, username, footprints, badge)
-       VALUES ($1, $2, $3, $4, $5, $6)
+       (
+      destination_id,
+       rating, 
+       comment,
+       cleanliness,
+       safety,
+       accessibility,
+       staff,
+       value,
+       recommend,
+       username, 
+       footprints, 
+       badge
+       )
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
        RETURNING
          id,
          destination_id AS "destinationId",
          rating,
          comment,
+        cleanliness,
+         safety,
+         accessibility,
+         staff,
+         value,
+         recommend,
          username,
          footprints,
          badge,
@@ -410,7 +437,13 @@ app.post("/api/visits", async (req, res) => {
       [
         destId, 
         visitRating, 
-        comment ? comment.trim() : "", 
+        comment ? comment.trim() : "",
+        cleanliness,
+        safety,
+        accessibility, 
+        staff,
+        value,
+        recommend,
         username, 
         footprints, 
         badge 
