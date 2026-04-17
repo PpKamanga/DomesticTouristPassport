@@ -15,7 +15,7 @@ function goBack() {
   window.location.href = "tourist.html";
 }
 
-const destinationImages = {
+  const destinationImages = {
   "Miss Shirley's Cafe": "images/miss shirleys cafe.jpg",
   "Baltimore National Aquarium": "images/baltimore national aquarium.jpg",
   "Maryland Zoo": "images/maryland zoo.jpg",
@@ -24,7 +24,7 @@ const destinationImages = {
   "Baltimore Museum of Industry": "images/baltimore museum of industry.jpg",
   "Maryland Science Center": "images/maryland science center.jpg",
   "Baltimore Museum of Art": "images/baltimore museum of art.jpg",
-  "Medieval Times": "images/medieval times.jpg"
+  "Medieval Times": "images/medieval times.avif"
 };
 
 const destinationDescriptions = {
@@ -42,7 +42,7 @@ const destinationDescriptions = {
 
 // Get destination ID from URL parameters
 const params = new URLSearchParams(window.location.search);
-const destinationId = params.get("destinationId");
+const destinationId = Number(params.get("destinationId"));
 
 fetch("/api/destinations")
   .then((res) => res.json())
@@ -57,8 +57,12 @@ fetch("/api/destinations")
 // Populate the page with destination details
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city;
-    document.getElementById("description").textContent = destinationDescriptions[destination.name] || "No description available.";
-    document.getElementById("image").src = destination.image || "images/default.jpg";
+    document.getElementById("description").textContent = 
+    destinationDescriptions[destination.name] || 
+    "No description available.";
+
+    const imageEl = document.getElementById("image");
+    console.log("image element:", imageEl);
 
     // Add event listener to the "Record Visit" button
     document

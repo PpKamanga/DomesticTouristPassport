@@ -18,7 +18,7 @@ document.getElementById("userInfo").textContent =
   "Baltimore Museum of Industry": "images/baltimore museum of industry.jpg",
   "Maryland Science Center": "images/maryland science center.jpg",
   "Baltimore Museum of Art": "images/baltimore museum of art.jpg",
-  "Medieval Times": "images/medieval times.jpg"
+  "Medieval Times": "images/medieval times.avif"
 };
 
 
