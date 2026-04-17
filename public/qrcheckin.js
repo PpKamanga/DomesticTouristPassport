@@ -13,15 +13,31 @@ function logout() {
   window.location.href = "login.html";
 }
 
-const params = new URLSearchParams(window.location.search);
-const destinationId = Number(params.get("id"));
+document.getElementById("confirmQR").addEventListener("click", async () => {
+  try {
+    const response = await fetch("/api/visits", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        destinationId: 1, // temporary for now
+        rating: 0,
+        comment: "",
+        username: currentUser.username
+      })
+    });
 
-document.getElementById("confirmQR").addEventListener("click", () => {
-  if (!destinationId) {
-    document.getElementById("qrMessage").textContent =
-      "Invalid destination. Please try again.";
-    return;
+    const data = await response.json();
+
+    if (response.ok) {
+      document.getElementById("qrMessage").textContent =
+        "QR Check-In successful!";
+    } else {
+      document.getElementById("qrMessage").textContent =
+        data.message || "Error checking in.";
+    }
+  } catch (error) {
+    console.error(error);
   }
-
-  window.location.href = `destination-details.html?id=${destinationId}`;
 });
