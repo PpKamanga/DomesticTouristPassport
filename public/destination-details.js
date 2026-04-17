@@ -28,6 +28,7 @@ const destinationImages = {
 };
 
 const destinationDescriptions = {
+  "Miss Shirley's Cafe": "Miss Shirley's Cafe is a beloved local eatery in Baltimore, known for its delicious breakfast and brunch offerings, including signature dishes like the Miss Shirley's Chicken and Waffles.",
   "Baltimore National Aquarium": "The Baltimore National Aquarium is one of the city’s most popular attractions, featuring marine life exhibits, sharks, dolphins, and interactive experiences for visitors of all ages.",
   "Maryland Zoo": "The Maryland Zoo offers visitors the opportunity to explore animal exhibits, family-friendly activities, and conservation programs in a large outdoor setting.",
   "Everyman Theatre": "Everyman Theatre is a professional theater in Baltimore known for live performances, classic plays, and engaging cultural experiences in an intimate setting.",
