@@ -55,7 +55,7 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
   const recommend = document.getElementById("recommend").value;
 
   if (!cleanliness || !safety || !accessibility || !staff || !value || !recommend) {
-  visitMessage.textContent =
+  message.textContent =
     "Please complete the tourism standards survey to earn footprints.";
   return;
 }
@@ -69,12 +69,12 @@ document.getElementById("visitForm").addEventListener("submit", function (event)
       destinationId: Number(destinationId),
       rating: Number(rating),
       comment: comment,
-      cleanliness: Number(cleanliness),
-      safety: Number(safety),
-      accessibility: Number(accessibility),
-      staff: Number(staff),
-      value: Number(value),
-      recommend: Number(recommend),
+      cleanliness,
+      safety,
+      accessibility,
+      staff,
+      value,
+      recommend,
       username: currentUser.username
     })
 
