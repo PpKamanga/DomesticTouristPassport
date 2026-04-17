@@ -41,18 +41,15 @@ function loadDestinations() {
     destinationImages[d.name] ||
     "images/default.jpg";
 
-  const card = document.createElement("div");
-  card.className = "attraction-card";
-  card.innerHTML = `
-    <img src="${imageUrl}" alt="${d.name}">
-    <h3>${d.name}</h3>
-    <p>${d.city}</p>
-      <button class="qr-btn" onclick="event.stopPropagation(); goToQRCheckIn(${d.id})">
-    QR Check-In
-  </button>
-  `;
+const card = document.createElement("div");
+card.className = "attraction-card";
+card.innerHTML = `
+  <img src="${imageUrl}" alt="${d.name}">
+  <h3>${d.name}</h3>
+  <p>${d.city}</p>
+`;
 
-  card.addEventListener("click", () => {
+card.addEventListener("click", () => {
   window.location.href = `destination-details.html?destinationId=${d.id}`;
 });
 
@@ -89,7 +86,7 @@ function goToVisitPage() {
 }
 
 function goToQRPage() {
-  window.location.href = "qr.html";
+  window.location.href = "qrcheckin.html";
 }
 
 function toggleVisits() {
