@@ -58,13 +58,13 @@ fetch("/api/destinations")
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city;
     document.getElementById("description").textContent = destinationDescriptions[destination.name] || "No description available.";
-    document.getElementById("image").src = destinationImages[destination.name] || "https://via.placeholder.com/400x300?text=No+Image";
+    document.getElementById("image").src = destination.image || "images/default.jpg";
 
     // Add event listener to the "Record Visit" button
     document
       .getElementById("recordVisitBtn")
       .addEventListener("click", () => {
-        window.location.href = `visit.html?id=${destination.id}`;
+        window.location.href = `visit.html?destinationid=${destination.id}`;
       });
   })
   .catch((error) => {
