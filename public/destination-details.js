@@ -11,8 +11,23 @@ function logout() {
   window.location.href = "login.html";
 }
 
+function goToMyVisitsPage() {
+  window.location.href = "myvisits.html";
+}
+
+function goToQRPage() {
+  window.location.href = "qrcheckin.html";
+}
+function goHome() {
+  window.location.href = "home.html";
+}
+
 function goBack() {
-  window.location.href = "tourist.html";
+  if (document.referrer && document.referrer !== "") {
+    window.history.back();
+  } else {
+    window.location.href = "home.html";
+  }
 }
 
   const destinationImages = {

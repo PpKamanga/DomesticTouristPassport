@@ -76,6 +76,18 @@ function goToQRPage() {
   window.location.href = "qrcheckin.html";
 }
 
+function goHome() {
+  window.location.href = "home.html";
+}
+
+function goBack() {
+  if (document.referrer && document.referrer !== "") {
+    window.history.back();
+  } else {
+    window.location.href = "home.html";
+  }
+}
+
 function toggleVisits() {
   const visitsSection = document.getElementById("visitsSection");
 

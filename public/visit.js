@@ -6,8 +6,16 @@ if (!currentUser || currentUser.role !== "tourist") {
   window.location.href = "login.html";
 }
 
+function goHome() {
+  window.location.href = "home.html";
+}
+
 function goBack() {
-  window.location.href = "tourist.html";
+  if (document.referrer && document.referrer !== "") {
+    window.history.back();
+  } else {
+    window.location.href = "home.html";
+  }
 }
 
 function logout() {
