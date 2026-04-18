@@ -30,49 +30,78 @@ function logout() {
   window.location.href = "login.html";
 }
 
-Promise.all([
-  fetch("/api/visits").then(res => res.json()),
-  fetch("/api/destinations").then(res => res.json())
-])
-  .then(([visitsData, destinations]) => {
-    const container = document.getElementById("myVisitsContainer");
-    const message = document.getElementById("visitsMessage");
+const destinationImages = {
+  "Miss Shirley's Cafe": "images/miss shirleys cafe.jpg",
+  "Baltimore National Aquarium": "images/baltimore national aquarium.jpg",
+  "Maryland Zoo": "images/maryland zoo.jpg",
+  "Everyman Theatre": "images/everyman theatre.jpg",
+  "Walter's Museum of Art": "images/walters museum of art.jpg",
+  "Baltimore Museum of Industry": "images/baltimore museum of industry.jpg",
+  "Baltimore Museum of Art": "images/baltimore museum of art.jpg",
+  "Maryland Science Center": "images/maryland science center.jpg",
+  "Medieval Times": "images/medieval times.avif"
+};
 
-    const myVisits = visitsData.visits.filter(
-      visit => visit.username === currentUser.username
-    );
+async function loadMyVisits() {
+  const container = document.getElementById("myVisitsContainer");
 
-    if (myVisits.length === 0) {
-      message.textContent = "You have not recorded any visits yet.";
+  try {
+    const VisitResponse = await fetch("/api/visits");
+    const visitData = await VisitResponse.json();
+
+    const destinationsResponse = await fetch("/api/destinations");
+    const destinationsData = await destinationsResponse.json();
+
+    console.log("Visits data:", visitData.visits); 
+
+    if (!VisitResponse.ok || !destinationsResponse.ok) {
+      container.innerHTML = "<p>Failed to load visits.</p>";
       return;
     }
 
-    myVisits.forEach(visit => {
-      const destination = destinations.find(
-        d => d.id === visit.destinationId
-      );
+    const myVisits = visitData.visits.filter(
+      (visit) => visit.username === currentUser.username
+    );
 
-      const destinationName = destination
-        ? `${destination.name} (${destination.city})`
-        : `Destination ID: ${visit.destinationId}`;
+    if (myVisits.length === 0) {
+      container.innerHTML = "<p>You have not recorded any visits yet.</p>";
+      return;
+    }
 
-      const card = document.createElement("div");
-      card.className = "attraction-card";
+    container.innerHTML = myVisits
+      .map((visit) => {
+        const destination = destinationsData.find((d) => d.id === visit.destinationId);
 
-      card.innerHTML = `
-        <h3>${destinationName}</h3>
-        <p><strong>Rating:</strong> ${visit.rating}</p>
-        <p><strong>Comment:</strong> ${visit.comment || "No comment"}</p>
-        <p><strong>Footprints:</strong> ${visit.footprints}</p>
-        <p><strong>Badge:</strong> ${visit.badge}</p>
-        <p><strong>Date:</strong> ${new Date(visit.date).toLocaleString()}</p>
-      `;
+        if (!destination) return "";
 
-      container.appendChild(card);
-    });
-  })
-  .catch(error => {
+        const imagePath = destinationImages[destination.name] || "images/default.jpg";
+
+
+        return `
+          <div class="visit-card">
+            <img src="${imagePath}" alt="${destination.name}" class="visit-card-image">
+
+            <div class="visit-card-body">
+              <h3 class="visit-title">${destination.name}</h3>
+
+              <button onclick="viewDestination(${visit.destinationId})">
+                See Destination
+              </button>
+
+              <p><strong>Rating:</strong> ${visit.rating ? visit.rating : "No rating"}</p>
+              <p><strong>Comment:</strong> ${visit.comment ? visit.comment : "No comment"}</p>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+    }catch(error) {
     console.error("Error loading my visits:", error);
-    document.getElementById("visitsMessage").textContent =
-      "Failed to load visits.";
-  });
+    container.innerHTML = "<p>Failed to load visits. Please try again later.</p>";
+  }
+}
+
+function viewDestination(destinationId) {
+  window.location.href = `destination.html?destinationId=${destinationId}`;
+}
+loadMyVisits();
