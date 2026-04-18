@@ -14,3 +14,6 @@ function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
 }
+function goToAdminLogin() {
+  window.location.href = "login.html?role=admin";
+}
