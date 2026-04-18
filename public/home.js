@@ -43,11 +43,16 @@ function generateMembershipId(username) {
   return `DTP-${shortName}-2026`;
 }
 
-function getBadgeTitle(totalFootprints) {
-  if (totalFootprints >= 500) return "Elite Explorer";
-  if (totalFootprints >= 200) return "Explorer";
-  if (totalFootprints >= 50) return "Rising Traveler";
-  return "Beginner";
+function getBadgeTitle(totalVisits) {
+  let currentBadge = "null";
+
+  for (const badge of badgeDistribution) {
+    if (totalVisits >= badge.visits) {
+      currentBadge = badge.name;
+    }
+  }
+
+  return currentBadge;
 }
 
 async function loadDashboard() {
@@ -75,20 +80,15 @@ async function loadDashboard() {
     const totalVisits = userVisits.length;
     const currentBadge = getCurrentBadge(totalVisits);
 
-console.log("Current user:", currentUser);
-console.log("All visits:", allVisits);
-console.log("User visits:", userVisits);
-console.log("Total visits:", totalVisits);
-console.log("Total footprints:", totalFootprints);
-console.log("Current badge:", currentBadge);
-
 if (currentBadge) {
   document.getElementById("badgeTitle").textContent = currentBadge.name;
   document.getElementById("badgeImage").src = currentBadge.image;
+} else {
+  document.getElementById("badgeTitle").textContent = "No Badge Yet";
 }
 
     document.getElementById("memberFootprints").textContent = totalFootprints;
-    document.getElementById("badgeTitle").textContent = getBadgeTitle(totalFootprints);
+    document.getElementById("badgeTitle").textContent = getBadgeTitle(totalVisits);
   } catch (error) {
     console.error("Error loading dashboard:", error);
     document.getElementById("memberFootprints").textContent = "0";
