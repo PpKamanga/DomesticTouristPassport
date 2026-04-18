@@ -9,6 +9,15 @@ if (!currentUser || currentUser.role !== "admin") {
 document.getElementById("userInfo").textContent =
   `Logged in as ${currentUser.username} (${currentUser.role})`;
 
+ function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+}
+
+function goHome() {
+  window.location.href = "home.html";
+}
+
 function loadAnalytics() {
   fetch(`/api/admin/analytics?role=${currentUser.role}`)
     .then(res => res.json())
@@ -81,10 +90,6 @@ function toggleComments() {
   }
 }
 
-function logout() {
-  localStorage.removeItem("currentUser");
-  window.location.href = "login.html";
-}
 
 loadAnalytics();
 loadComments();
