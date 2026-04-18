@@ -3,136 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tourist Home</title>
+    <title>Domestic Tourist Passport - Home</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="home-page">
-    <div class="dashboard-shell">
-      <!-- Top bar -->
-      <header class="dashboard-topbar">
-        <div class="dashboard-brand" onclick="window.location.href='home.html'">
-          <img src="images/logo.png" alt="Domestic Tourist Passport Logo" class="brand-logo" />
-          <div class="brand-text">
-            <span>Domestic</span>
-            <span>Tourist Passport</span>
+    <div class="home-layout">
+      
+      
+      <aside class="home-sidebar">
+        <div>
+            <div class="sidebar-brand">
+              <h1>Domestic Tourist Passport</h1>
+            <p>Explore attractions, record visits, and earn footprints.</p>
+          </div>
+
+          <div class="welcome-box">
+            <h2 id="welcomeMessage">Welcome</h2>
+            <p>Your Baltimore experience starts here.</p>
+          </div>
+
+          <div class="nav-card-list">
+            <a href="visit.html" class="nav-card primary-card">
+              <div>
+                <h3>Record Visit</h3>
+                <p>Log your experience and earn footprints.</p>
+              </div>
+            </a>
+
+            <a href="qrcheckin.html" class="nav-card">
+              <div>
+                <h3>QR Check-In</h3>
+                <p>Check in quickly at participating attractions.</p>
+              </div>
+            </a>
+
+            <a href="tourist.html" class="nav-card">
+              <div>
+                <h3>View Destinations</h3>
+                <p>Browse attractions and plan your next visit.</p>
+              </div>
+            </a>
+
+            <a href="myvisits.html" class="nav-card">
+              <div>
+                <h3>Visit History</h3>
+                <p>Review your past visits and activity.</p>
+              </div>
+            </a>
+
+            <a href="about.html" class="nav-card">
+              <div>
+                <h3>About</h3>
+                <p>Learn more about the Domestic Tourist Passport.</p>
+              </div>
+            </a>
           </div>
         </div>
 
-        <div class="dashboard-actions">
-          <button class="top-action" onclick="window.location.href='visit.html'">
-            <span class="action-icon">📝</span>
-            <span>Record Visit</span>
-          </button>
-
-          <button class="top-action" onclick="window.location.href='myvisits.html'">
-            <span class="action-icon">📅</span>
-            <span>My Visits</span>
-          </button>
-
-          <button class="top-action" onclick="window.location.href='qrcheckin.html'">
-            <span class="action-icon">🔳</span>
-            <span>QR Check-In</span>
-          </button>
-
-          <button class="top-action" onclick="logout()">
-            <span class="action-icon">↪</span>
-            <span>Logout</span>
-          </button>
+        <div class="sidebar-actions">
+          <button onclick="logout()" class="logout-btn">Logout</button>
         </div>
-      </header>
+      </aside>
 
-      <!-- Membership card -->
-      <section class="membership-card">
-        <div class="membership-header">
-          <div class="member-left">
-            <h2 id="memberName">MISS Priscillah praise Kamanga</h2>
-            <p class="footprints-line">
-              <span id="memberFootprints">0</span> Footprints
+      
+      <section class="home-hero">
+        <div class="hero-overlay">
+          <div class="hero-content">
+            <p class="hero-small">Baltimore</p>
+            <h2>Explore the City.<br />Earn Footprints.</h2>
+            <p class="hero-text">
+              Discover local attractions, track your visits, and build your
+              digital passport through meaningful travel experiences.
             </p>
           </div>
-
-          <div class="member-badge">
-            <img id="badgeImage" src="images/waypoint.png" alt="Badge" class="badge-image" />
-            <span id="badgeTitle">Waypoint</span>
-          </div>
-        </div>
-
-        <div class="membership-logo-wrap">
-          <img
-            src="images/logo.png"
-            alt="Domestic Tourist Passport Logo"
-            class="membership-logo"
-          />
-        </div>
-
-        <div class="membership-footer">
-          <p>
-            Membership ID –
-            <strong id="memberId">10001009955</strong>
-          </p>
-          <span class="membership-arrow">→</span>
         </div>
       </section>
 
-      <!-- Tiles -->
-      <section class="dashboard-grid">
-        <div class="feature-tile" onclick="window.location.href='footprints.html'">
-          <div class="tile-icon">👣</div>
-          <h3>View Footprints</h3>
-          <p>See your total footprints and history</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='gift-footprints.html'">
-          <div class="tile-icon">🎁</div>
-          <h3>Gift Footprints</h3>
-          <p>Share your footprints with friends</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='rewards.html'">
-          <div class="tile-icon">🔄</div>
-          <h3>Convert Footprints to Rewards</h3>
-          <p>Redeem footprints for exciting rewards</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='wishlist.html'">
-          <div class="tile-icon">💚</div>
-          <h3>Visit Wishlist</h3>
-          <p>Save places you want to visit</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='deals.html'">
-          <div class="tile-icon">🏷️</div>
-          <h3>Destination Deals</h3>
-          <p>Discover discounts and special offers</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='tourist.html'">
-          <div class="tile-icon">📍</div>
-          <h3>Explore Destinations</h3>
-          <p>Find amazing places across the country</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='achievements.html'">
-          <div class="tile-icon">🏆</div>
-          <h3>My Achievements</h3>
-          <p>View your badges and milestones</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='myvisits.html'">
-          <div class="tile-icon">🧳</div>
-          <h3>Travel History</h3>
-          <p>See all the places you’ve visited</p>
-        </div>
-
-        <div class="feature-tile" onclick="window.location.href='profile.html'">
-          <div class="tile-icon">👤</div>
-          <h3>Profile & Settings</h3>
-          <p>Manage your account and preferences</p>
-        </div>
-      </section>
-
-      <p class="dashboard-tagline">💚 Explore more. Earn more. Create memories.</p>
-    </div>
+    </div>    
 
     <script src="home.js"></script>
   </body>
