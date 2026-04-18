@@ -772,7 +772,7 @@ p {
 
 .primary-card {
   background: #fff7e8;
-  border: 2px solid #f0c36a;
+  border: 2px solid #fff7e8;
 }
 
 .nav-card h3 {
@@ -814,6 +814,7 @@ p {
   position: relative;
   display: flex;
   align-items: stretch;
+
 }
 
 .hero-overlay {

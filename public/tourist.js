@@ -29,13 +29,9 @@ function loadDestinations() {
     .then(data => {
       const grid = document.getElementById("destinations");
       const select = document.getElementById("destinationId");
-      const totalCount = document.getElementById("total-count");
 
       grid.innerHTML = "";
 
-      if (totalCount) {
-        totalCount.textContent = `Total Tourist Attractions: ${data.length}`;
-      }
 
 data.forEach(d => {
   destinationsMap[d.id] = d.name;
@@ -62,19 +58,6 @@ data.forEach(d => {
     })
     .catch(error => {
       console.error("Error loading destinations:", error);
-    });
-}
-function loadFootprints() {
-  fetch("/api/visits")
-    .then(res => res.json())
-    .then(data => {
-      const totalFootprints = document.getElementById("dashboardFootprints");
-      if (totalFootprints) {
-        totalFootprints.textContent = `Total Footprints: ${data.totalFootprints}`;
-      }
-    })
-    .catch(error => {
-      console.error("Error loading footprints:", error);
     });
 }
 
@@ -105,7 +88,6 @@ function toggleVisits() {
 }
 
 loadDestinations();
-loadFootprints();
 
 async function loadVisits() {
   try {
