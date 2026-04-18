@@ -1,3 +1,5 @@
+const { log } = require("node:console");
+
 console.log("destination-details.js loaded");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -61,29 +63,40 @@ const destinationId = Number(params.get("destinationId"));
 
 fetch("/api/destinations")
   .then((res) => res.json())
-  .then((destinations) => {
-    const destination = destinations.find((d) => d.id == destinationId);
+  .then((data) => {
+    console.log("Destinations data:", data);
+
+    const destination = data.find((d) => d.id == destinationId);
 
     if (!destination) {
-      document.querySelector(".destination-card-page").innerHTML =
-        "<h2>Destination not found</h2>";
+      document.getElementById("name").textContent = "Destination not found";
       return;
     }
+    
 // Populate the page with destination details
     document.getElementById("name").textContent = destination.name;
-    document.getElementById("city").textContent = destination.city;
+    document.getElementById("city").textContent = destination.city || "";
     document.getElementById("description").textContent = 
-    destinationDescriptions[destination.name] || 
+    destination.descriptions || 
     "No description available.";
 
+    const cleanName = (destination.name || "").trim();
+    const imageUrl =
+      destinationImages[cleanName] ||
+      "images/default.jpg";
+
+      console.log("Image URL:", imageUrl);
+      console.log("Destination name:", cleanName);
+
     const imageEl = document.getElementById("image");
-    console.log("image element:", imageEl);
+    imageEl.src = imageUrl;
+    imageEl.alt = cleanName;
 
     // Add event listener to the "Record Visit" button
     document
       .getElementById("recordVisitBtn")
       .addEventListener("click", () => {
-        window.location.href = `visit.html?destinationid=${destination.id}`;
+        window.location.href = `visit.html?destinationId=${destination.id}`;
       });
   })
   .catch((error) => {
