@@ -41,7 +41,7 @@ function loginUser(event) {
       loginMessage.textContent = `${data.message}. Logged in as ${data.user.role}.`;
 
       if (data.user.role === "tourist") {
-        window.location.href = "tourist.html";
+        window.location.href = "home.html";
       }
 
       if (data.user.role === "admin") {
