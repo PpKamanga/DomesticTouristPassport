@@ -1,5 +1,3 @@
-const { log } = require("node:console");
-
 console.log("destination-details.js loaded");
 
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -60,6 +58,7 @@ const destinationDescriptions = {
 // Get destination ID from URL parameters
 const params = new URLSearchParams(window.location.search);
 const destinationId = Number(params.get("destinationId"));
+console.log("Destination ID from URL:", destinationId);
 
 fetch("/api/destinations")
   .then((res) => res.json())
@@ -74,13 +73,14 @@ fetch("/api/destinations")
     }
     
 // Populate the page with destination details
+    const cleanName = (destination.name || "").trim();
+
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city || "";
     document.getElementById("description").textContent = 
-    destination.descriptions || 
+    destinationDescriptions[cleanName] || 
     "No description available.";
 
-    const cleanName = (destination.name || "").trim();
     const imageUrl =
       destinationImages[cleanName] ||
       "images/default.jpg";
@@ -89,8 +89,10 @@ fetch("/api/destinations")
       console.log("Destination name:", cleanName);
 
     const imageEl = document.getElementById("image");
+    if (!imageEl) {
     imageEl.src = imageUrl;
     imageEl.alt = cleanName;
+    }
 
     // Add event listener to the "Record Visit" button
     document

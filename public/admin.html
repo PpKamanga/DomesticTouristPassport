@@ -50,6 +50,42 @@
   <div id="adminCommentsList" class="summary-cards"></div>
 </section>
 
+<section class="admin-insights-section">
+  <h2 style="text-align:center;">Destination Insights</h2>
+
+  <div class="summary-cards">
+    <div class="summary-card">
+      <h3>Most Visited Destination</h3>
+      <p id="mostVisitedDestination">Loading...</p>
+    </div>
+
+    <div class="summary-card">
+      <h3>Least Visited Destination</h3>
+      <p id="leastVisitedDestination">Loading...</p>
+    </div>
+
+    <div class="summary-card">
+      <h3>Best Rated Destination</h3>
+      <p id="bestRatedDestination">Loading...</p>
+    </div>
+  </div>
+
+  <div class="ratings-table-wrapper">
+    <h3 style="text-align:center;">Average Rating Per Destination</h3>
+
+    <table class="ratings-table">
+      <thead>
+        <tr>
+          <th>Destination</th>
+          <th>Total Visits</th>
+          <th>Average Rating</th>
+        </tr>
+      </thead>
+      <tbody id="destinationRatingsTable"></tbody>
+    </table>
+  </div>
+</section>
+
     <script src="admin.js"></script>
   </body>
 </html>

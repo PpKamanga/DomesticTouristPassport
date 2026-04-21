@@ -1,3 +1,4 @@
+/
 body {
  background: linear-gradient(to bottom right, #f4f8f5, #eef3ff); 
   margin: 0;
@@ -983,4 +984,35 @@ body {
 .visit-card-body button {
   display: inline-block;
   margin-bottom: 12px;
+}
+/* =========================
+   DESTINATION DETAILS PAGE
+========================= */
+
+#recordVisitBtn {
+  display: block;
+  margin: 25px auto;
+  padding: 14px 28px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#recordVisitBtn:hover {
+  background-color: #256628;
+}
+
+#description {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin: 15px auto;
+  max-width: 600px;
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
