@@ -1,4 +1,4 @@
-/
+
 body {
  background: linear-gradient(to bottom right, #f4f8f5, #eef3ff); 
   margin: 0;
@@ -985,6 +985,7 @@ body {
   display: inline-block;
   margin-bottom: 12px;
 }
+
 /* =========================
    DESTINATION DETAILS PAGE
 ========================= */

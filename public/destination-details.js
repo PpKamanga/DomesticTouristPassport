@@ -31,15 +31,15 @@ function goBack() {
 }
 
   const destinationImages = {
-  "Miss Shirley's Cafe": "images/miss shirleys cafe.jpg",
-  "Baltimore National Aquarium": "images/baltimore national aquarium.jpg",
-  "Maryland Zoo": "images/maryland zoo.jpg",
-  "Everyman Theatre": "images/everyman theatre.jpg",
-  "Walter's Museum of Art": "images/walters museum of art.jpg",
-  "Baltimore Museum of Industry": "images/baltimore museum of industry.jpg",
-  "Maryland Science Center": "images/maryland science center.jpg",
-  "Baltimore Museum of Art": "images/baltimore museum of art.jpg",
-  "Medieval Times": "images/medieval times.avif"
+  "Miss Shirley's Cafe": "/images/miss shirleys cafe.jpg",
+  "Baltimore National Aquarium": "/images/baltimore national aquarium.jpg",
+  "Maryland Zoo": "/images/maryland zoo.jpg",
+  "Everyman Theatre": "/images/everyman theatre.jpg",
+  "Walter's Museum of Art": "/images/walters museum of art.jpg",
+  "Baltimore Museum of Industry": "/images/baltimore museum of industry.jpg",
+  "Maryland Science Center": "/images/maryland science center.jpg",
+  "Baltimore Museum of Art": "/images/baltimore museum of art.jpg",
+  "Medieval Times": "/images/medieval times.avif"
 };
 
 const destinationDescriptions = {
@@ -74,6 +74,7 @@ fetch("/api/destinations")
     
 // Populate the page with destination details
     const cleanName = (destination.name || "").trim();
+    console.log("Destination name:", cleanName);
 
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city || "";
@@ -83,16 +84,25 @@ fetch("/api/destinations")
 
     const imageUrl =
       destinationImages[cleanName] ||
-      "images/default.jpg";
+      "/images/default.jpg";
 
       console.log("Image URL:", imageUrl);
-      console.log("Destination name:", cleanName);
+      
 
     const imageEl = document.getElementById("image");
-    if (!imageEl) {
+
+    if (imageEl) {
+    imageEl.onload = () => {
+      console.log("Image loaded successfully:", imageUrl);
+    };
+
+    imageEl.onerror = () => {
+      console.log("Image failed to load:", imageUrl);
+    };
+
     imageEl.src = imageUrl;
     imageEl.alt = cleanName;
-    }
+  }
 
     // Add event listener to the "Record Visit" button
     document
