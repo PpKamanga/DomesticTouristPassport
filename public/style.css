@@ -3,12 +3,20 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 
+  background: #f4f4f4; 
+
+  min-height: 100vh;
+}
+
+/* BACKGROUND IMAGE FOR SELECTED PAGES */
+.page-background {
   background:
     linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url("images/baltimorecity.jpg") center center / cover no-repeat;
 
   min-height: 100vh;
 }
+
 /*GENERAL LAYOUT*/
 .container {
   max-width: 600px;
@@ -1015,6 +1023,11 @@ p {
   max-width: 900px;
   margin: 30px auto;
   padding: 20px;
+
+  background: white;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .destination-card {
