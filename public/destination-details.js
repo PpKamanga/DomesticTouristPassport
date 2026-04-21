@@ -43,7 +43,28 @@ function goBack() {
 };
 
 const destinationDescriptions = {
-  "Miss Shirley's Cafe": "Miss Shirley's Cafe is a beloved local eatery in Baltimore, known for its delicious breakfast and brunch offerings, including signature dishes like the Miss Shirley's Chicken and Waffles.",
+  "Miss Shirley's Cafe": `Miss Shirley's Cafe is a beloved local eatery in Baltimore, known for its delicious breakfast and brunch offerings, including signature dishes like the Miss Shirley's Chicken and Waffles.
+  Miss Shirley's Cafe offers guests an upscale-casual and exceptional award-winning culinary experience for all-day breakfast, brunch and lunch. Our specialties are rooted in Southern fundamentals and the abundance of fresh ingredients from Maryland. We pride ourselves in beautifully presented plates, prompt and professional service, as well as clean, comfortable and well-maintained premises for our guests.
+  
+  Located in Baltimore’s bustling Inner Harbor and thriving with Charm City energy, both locals and tourists enjoy the large outdoor patio, all glass Falls Room, and the inviting indoor dining rooms. A Leadership in Energy & Environmental Design (LEED) Platinum Property in Baltimore!
+  
+  Location:
+            Inner Harbor
+            750 E. Pratt Street,
+            Baltimore, MD 21202,
+            443.4BRUNCH
+            InnerHarbor@MissShirleys.com
+
+  Operating Hours: Monday - Sunday: 8:00 AM - 3:00 PM
+
+  Average Rating: 
+  TripAdvisor: 4.5/5 (based on 1,000+ reviews)
+  Google: 4.6/5 (based on 2,000+ reviews)
+
+  Link to menu: <br> <a href="https://www.missshirleys.com/menu/full-menu" target="_blank">View Menu
+   </a>
+  Link to website: 
+  <a href="https://www.missshirleys.com/" target="_blank">Visit Website</a>`, 
   "Baltimore National Aquarium": "The Baltimore National Aquarium is one of the city’s most popular attractions, featuring marine life exhibits, sharks, dolphins, and interactive experiences for visitors of all ages.",
   "Maryland Zoo": "The Maryland Zoo offers visitors the opportunity to explore animal exhibits, family-friendly activities, and conservation programs in a large outdoor setting.",
   "Everyman Theatre": "Everyman Theatre is a professional theater in Baltimore known for live performances, classic plays, and engaging cultural experiences in an intimate setting.",
@@ -78,7 +99,7 @@ fetch("/api/destinations")
 
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city || "";
-    document.getElementById("description").textContent = 
+    document.getElementById("description").innerHTML = 
     destinationDescriptions[cleanName] || 
     "No description available.";
 

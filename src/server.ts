@@ -42,8 +42,9 @@ let destinations = [
     name: "Miss Shirley's Cafe",
     city: "Baltimore",
     image: "images/miss-shirleys-cafe.jpg",
-    description: "A cozy local café in Baltimore offering a welcoming atmosphere and a memorable neighborhood experience."
+    description: "Miss Shirley's Cafe offers guests an upscale-casual and exceptional award-winning culinary experience for all-day breakfast, brunch and lunch. Our specialties are rooted in Southern fundamentals and the abundance of fresh ingredients from Maryland. We pride ourselves in beautifully presented plates, prompt and professional service, as well as clean, comfortable and well-maintained premises for our guests.Located in Baltimore’s bustling Inner Harbor and thriving with Charm City energy, both locals and tourists alike enjoy the large outdoor patio, all glass Falls Room, and the inviting indoor dining rooms. A Leadership in Energy & Environmental Design (LEED) Platinum Property in Baltimore!"
   },
+
   {
     id: 2,
     name: "Maryland Zoo",

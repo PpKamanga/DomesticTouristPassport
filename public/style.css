@@ -1018,6 +1018,8 @@ p {
   max-width: 600px;
   line-height: 1.6;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+   white-space: pre-line;
 }
 .destination-card-page {
   max-width: 900px;
@@ -1043,4 +1045,17 @@ p {
   height: 350px;
   object-fit: cover;
   display: block;
+}
+.visit-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 14px;
+  background: #2e7d32;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.visit-link:hover {
+  background: #256628;
 }
