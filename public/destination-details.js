@@ -65,7 +65,25 @@ const destinationDescriptions = {
    </a>
   Link to website: 
   <a href="https://www.missshirleys.com/" target="_blank">Visit Website</a>`, 
-  "Baltimore National Aquarium": "The Baltimore National Aquarium is one of the city’s most popular attractions, featuring marine life exhibits, sharks, dolphins, and interactive experiences for visitors of all ages.",
+  "Baltimore National Aquarium": `The Baltimore National Aquarium is one of the city’s most popular attractions, featuring marine life exhibits, sharks, dolphins, and interactive experiences for visitors of all ages. It is a private nonprofit organization that connects people with nature to inspire compassion and care for our ocean planet.
+
+   At its heart, the National Aquarium is a place of connection. Its colorful, angular buildings perch on the edge of Baltimore's Inner Harbor, part of the Patapsco River, which flows into the Chesapeake Bay and the ocean beyond. The Aquarium's mission—to connect people with nature to inspire compassion and care for our ocean planet—takes shape within its building and on its campus, but far outside them, too. The Aquarium has always been a place where people of all ages can connect with each other, coming together to share and learn and have fun. As much as the organization has grown and evolved over the decades, its iconic silhouette on Baltimore's Inner Harbor remains steadfast, a symbol of the way the Aquarium's vibrant present and promising future are inextricably linked to its storied past.
+   
+   Location:
+            Inner Harbor
+            501 E. Pratt Street,
+            Baltimore, MD 21202,
+            410-576-3800
+            
+   Operating Hours: Monday - Thursday: 9:00 AM - 6:00 PM
+                    Friday: 9:00 AM - 9:00 PM
+                    Saturday: 9:00 AM - 7:00 PM
+                    Sunday: 9:00 AM - 6:00 PM
+   
+    Average Rating: TripAdvisor: 4.5/5 (based on 10,000+ reviews)
+                    Google: 4.6/5 (based on 20,000+ reviews)
+
+  Link to website: <br> <a href="https://aqua.org/" target="_blank">Visit Website</a>`,
   "Maryland Zoo": "The Maryland Zoo offers visitors the opportunity to explore animal exhibits, family-friendly activities, and conservation programs in a large outdoor setting.",
   "Everyman Theatre": "Everyman Theatre is a professional theater in Baltimore known for live performances, classic plays, and engaging cultural experiences in an intimate setting.",
   "Walter's Museum of Art": "The Walters Art Museum showcases a wide collection of art from different cultures and historical periods, making it a major educational and cultural destination.",
