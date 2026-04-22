@@ -20,15 +20,28 @@
       </div>
     </div>
 
+     <section class="qr-page">
+      <div class="qr-card">
+        <h2>Scan Destination QR Code</h2>
+        <p class="qr-subtext">
+          Allow camera access and scan the QR code at the destination.
+        </p>
+
+        <div class="qr-actions">
+          <button id="startScannerBtn">Open Camera</button>
+          <button id="stopScannerBtn" type="button">Stop Camera</button>
+        </div>
+
+        <div id="reader"></div>
+
     <div style="text-align:center; margin-top:50px;">
     <h2>Scan QR Code</h2>
 
-    <!-- Placeholder for now -->
-    <button id="confirmQR">Simulate QR Scan</button>
 
-    <p id="qrMessage"></p>
+    <p id="qrMessage" class="qr-message"></p>
   </div>
 
-    <script src="qrcheckin.js"></script>
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+    <script src="qrcheckin.js" defer></script>
   </body>
 </html>
