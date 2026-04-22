@@ -765,6 +765,16 @@ p {
   border-radius: 18px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  text-align: center;
+
+   text-decoration: none;
+  color: #1d1d1d;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-card:hover {
@@ -773,13 +783,14 @@ p {
 }
 
 .primary-card {
-  background: #fff7e8;
-  border: 2px solid #fff7e8;
+  background: #ffffff;
+  border: 2px solid #ffffff;
 }
 
 .nav-card h3 {
   margin: 0 0 6px 0;
   font-size: 1.1rem;
+  margin-bottom: 6px;
 }
 
 .nav-card p {
@@ -854,6 +865,7 @@ p {
   .home-sidebar {
     width: 100%;
     min-width: 0;
+    padding: 28px 20px;
   }
 
   .home-hero {

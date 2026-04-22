@@ -6,6 +6,14 @@ if (!currentUser || currentUser.role !== "tourist") {
   window.location.href = "login.html";
 }
 
+function goBack() {
+  if (document.referrer && document.referrer !== "") {
+    window.history.back();
+  } else {
+    window.location.href = "home.html";
+  }
+}
+
 function goHome() {
   window.location.href = "home.html";
 }
@@ -15,14 +23,6 @@ function goToQRPage() {
 
 function goToVisitPage() {
   window.location.href = "visit.html";
-}
-
-function goBack() {
-  if (document.referrer && document.referrer !== "") {
-    window.history.back();
-  } else {
-    window.location.href = "home.html";
-  }
 }
 
 function logout() {
@@ -68,14 +68,30 @@ async function loadMyVisits() {
       return;
     }
 
-    container.innerHTML = myVisits
-      .map((visit) => {
-        const destination = destinationsData.find((d) => d.id === visit.destinationId);
+    const groupedVisits = {};
+
+    myVisits.forEach((visit) => {
+      if (!groupedVisits[visit.destinationId]) {
+        groupedVisits[visit.destinationId] = [];
+      }
+        groupedVisits[visit.destinationId].push(visit);
+
+      });
+
+    container.innerHTML = Object.keys(groupedVisits)
+      .map((destinationId) => {
+        const numericDestinationId = Number(destinationId);
+
+        const destination = destinationsData.find(
+          (d) => d.id === numericDestinationId
+        );
+
 
         if (!destination) return "";
 
         const imagePath = destinationImages[destination.name] || "images/default.jpg";
-
+        
+         const visitCount = groupedVisits[destinationId].length;
 
         return `
           <div class="visit-card">
@@ -84,12 +100,15 @@ async function loadMyVisits() {
             <div class="visit-card-body">
               <h3 class="visit-title">${destination.name}</h3>
 
-              <button onclick="viewDestination(${visit.destinationId})">
+              <p><strong>Times Visited:</strong> ${visitCount}</p>
+
+              <button onclick="viewDestination(${numericDestinationId})">
                 See Destination
               </button>
 
-              <p><strong>Rating:</strong> ${visit.rating ? visit.rating : "No rating"}</p>
-              <p><strong>Comment:</strong> ${visit.comment ? visit.comment : "No comment"}</p>
+               <button onclick="viewFeedback(${numericDestinationId})">
+                  See Your Feedback
+              </button>
             </div>
           </div>
         `;
@@ -104,4 +123,9 @@ async function loadMyVisits() {
 function viewDestination(destinationId) {
   window.location.href = `destination.html?destinationId=${destinationId}`;
 }
+
+function viewFeedback(destinationId) {
+  window.location.href = `feedback.html?destinationId=${destinationId}`;
+}
+
 loadMyVisits();

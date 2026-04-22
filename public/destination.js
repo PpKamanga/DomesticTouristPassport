@@ -19,6 +19,10 @@ function goToMyVisitsPage() {
   window.location.href = "myvisits.html";
 }
 
+function goToQRPage() {
+  window.location.href = "qrcheckin.html";
+}
+
 function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
