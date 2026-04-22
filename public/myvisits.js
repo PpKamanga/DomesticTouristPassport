@@ -121,7 +121,7 @@ async function loadMyVisits() {
 }
 
 function viewDestination(destinationId) {
-  window.location.href = `destination.html?destinationId=${destinationId}`;
+  window.location.href = `destination-details.html?destinationId=${destinationId}`;
 }
 
 function viewFeedback(destinationId) {
