@@ -1066,3 +1066,9 @@ p {
 .visit-link:hover {
   background: #256628;
 }
+.admin-login {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
