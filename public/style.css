@@ -696,13 +696,6 @@ p {
   text-decoration: underline;
 }
 
-.home-page {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #1f1f1f;
-  min-height: 100vh;
-}
-
 .home-layout {
   display: flex;
   min-height: 100vh;
@@ -817,18 +810,10 @@ p {
   background: #eaf5ea;
 }
 
-.home-hero {
-  width: 65%;
-  background: url("images/baltimorecity.jpg") center center / cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: stretch;
-
-}
-
 .hero-overlay {
   width: 100%;
-  background: rgba(0, 0, 0, 0.34);
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.22);
   display: flex;
   align-items: center;
   padding: 60px;
@@ -866,14 +851,22 @@ p {
     flex-direction: column;
   }
 
-  .home-sidebar,
-  .home-hero {
+  .home-sidebar {
     width: 100%;
-    min-width: unset;
+    min-width: 0;
   }
 
   .home-hero {
-    min-height: 420px;
+    width: 100%;
+    height: 320px;
+    min-height: 300px;
+  }
+
+  .home-hero-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
   }
 
   .hero-overlay {
@@ -885,16 +878,25 @@ p {
   }
 }
 
-/* HOME PAGE FINAL VERSION */
+/* HOME PAGE FINAL VERSION DESKTOP */
 .home-hero {
   width: 65%;
-  min-height: 100vh;
   position: relative;
-  display: flex;
-  align-items: stretch;
-  background:
-    linear-gradient(to left, rgba(15, 90, 34, 0.7), rgba(15, 90, 34, 0)),
-    url("images/baltimorecity.jpg") center center / cover no-repeat;
+  min-height: 100vh;
+}
+
+.home-hero-image {
+  width: 100%;
+  height: 100;
+  object-fit: cover;
+  display: block;
+}
+
+.home-page {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #1f1f1f;
+  min-height: 100vh;
 }
 
 .hero-top-right {
@@ -920,6 +922,18 @@ p {
 .hero-btn:hover {
   background: #ffffff;
 }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 36px 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.32);
+  }
 
 .visits-page {
   padding: 30px;
