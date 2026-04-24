@@ -3,9 +3,6 @@ const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 if (!currentUser || currentUser.role !== "tourist") {
   window.location.href = "login.html";
 }
-function goHome() {
-  window.location.href = "home.html";
-}
 
 function goBack() {
   if (document.referrer && document.referrer !== "") {
@@ -13,6 +10,13 @@ function goBack() {
   } else {
     window.location.href = "home.html";
   }
+}
+function goHome() {
+  window.location.href = "home.html";
+}
+
+function goToVisit() {
+  window.location.href = "visitpage.html";
 }
 
 function goToMyVisitsPage() {
@@ -26,10 +30,6 @@ function goToQRPage() {
 function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
-}
-
-function goToVisit() {
-  window.location.href = "visitpage.html";
 }
 
 const destinationImages = {
