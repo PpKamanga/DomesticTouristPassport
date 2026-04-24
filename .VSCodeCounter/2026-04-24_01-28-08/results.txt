@@ -1,0 +1,61 @@
+Date : 2026-04-24 01:28:08
+Directory : c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport
+Total : 29 files,  4471 codes, 42 comments, 604 blanks, all 5117 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          2 |      1,430 |          0 |          2 |      1,432 |
+| JavaScript         |         11 |      1,048 |          3 |        266 |      1,317 |
+| PostCSS            |          1 |      1,000 |         21 |        161 |      1,182 |
+| TypeScript         |          3 |        490 |         18 |         77 |        585 |
+| HTML               |         11 |        490 |          0 |         97 |        587 |
+| JSON with Comments |          1 |         13 |          0 |          1 |         14 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                    | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                       |         29 |      4,471 |         42 |        604 |      5,117 |
+| . (Files)                                                                               |          3 |      1,443 |          0 |          3 |      1,446 |
+| public                                                                                  |         23 |      2,538 |         24 |        524 |      3,086 |
+| src                                                                                     |          3 |        490 |         18 |         77 |        585 |
++-----------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\package-lock.json               | JSON               |      1,391 |          0 |          1 |      1,392 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\package.json                    | JSON               |         39 |          0 |          1 |         40 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\admin.html               | HTML               |         76 |          0 |         15 |         91 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\admin.js                 | JavaScript         |        166 |          0 |         36 |        202 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination-details.html | HTML               |         32 |          0 |          5 |         37 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination-details.js   | JavaScript         |        206 |          3 |         74 |        283 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination.html         | HTML               |         27 |          0 |          6 |         33 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination.js           | JavaScript         |         50 |          0 |         13 |         63 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\feedback.html            | HTML               |         21 |          0 |          3 |         24 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\feedback.js              | JavaScript         |         68 |          0 |         16 |         84 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\home.html                | HTML               |         74 |          0 |         13 |         87 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\home.js                  | JavaScript         |         15 |          0 |          4 |         19 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\login.html               | HTML               |         45 |          0 |         12 |         57 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\login.js                 | JavaScript         |         45 |          0 |         10 |         55 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\myvisits.html            | HTML               |         25 |          0 |          3 |         28 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\myvisits.js              | JavaScript         |        104 |          0 |         27 |        131 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\qrcheckin.html           | HTML               |         39 |          0 |          8 |         47 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\qrcheckin.js             | JavaScript         |        149 |          0 |         31 |        180 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\register.html            | HTML               |         33 |          0 |          9 |         42 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\register.js              | JavaScript         |         37 |          0 |          7 |         44 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\style.css                | PostCSS            |      1,000 |         21 |        161 |      1,182 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\tourist.html             | HTML               |         40 |          0 |          8 |         48 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\tourist.js               | JavaScript         |        114 |          0 |         28 |        142 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\visit.html               | HTML               |         78 |          0 |         15 |         93 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\visit.js                 | JavaScript         |         94 |          0 |         20 |        114 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\db.ts                       | TypeScript         |         11 |          0 |          3 |         14 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\initDb.ts                   | TypeScript         |         61 |          0 |          7 |         68 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\server.ts                   | TypeScript         |        418 |         18 |         67 |        503 |
+| c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\tsconfig.json                   | JSON with Comments |         13 |          0 |          1 |         14 |
+| Total                                                                                   |                    |      4,471 |         42 |        604 |      5,117 |
++-----------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

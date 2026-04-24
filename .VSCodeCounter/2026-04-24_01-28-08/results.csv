@@ -1,0 +1,31 @@
+"filename", "language", "TypeScript", "JSON with Comments", "JSON", "HTML", "JavaScript", "PostCSS", "comment", "blank", "total"
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\package-lock.json", "JSON", 0, 0, 1391, 0, 0, 0, 0, 1, 1392
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\package.json", "JSON", 0, 0, 39, 0, 0, 0, 0, 1, 40
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\admin.html", "HTML", 0, 0, 0, 76, 0, 0, 0, 15, 91
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\admin.js", "JavaScript", 0, 0, 0, 0, 166, 0, 0, 36, 202
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination-details.html", "HTML", 0, 0, 0, 32, 0, 0, 0, 5, 37
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination-details.js", "JavaScript", 0, 0, 0, 0, 206, 0, 3, 74, 283
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination.html", "HTML", 0, 0, 0, 27, 0, 0, 0, 6, 33
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\destination.js", "JavaScript", 0, 0, 0, 0, 50, 0, 0, 13, 63
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\feedback.html", "HTML", 0, 0, 0, 21, 0, 0, 0, 3, 24
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\feedback.js", "JavaScript", 0, 0, 0, 0, 68, 0, 0, 16, 84
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\home.html", "HTML", 0, 0, 0, 74, 0, 0, 0, 13, 87
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\home.js", "JavaScript", 0, 0, 0, 0, 15, 0, 0, 4, 19
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\login.html", "HTML", 0, 0, 0, 45, 0, 0, 0, 12, 57
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\login.js", "JavaScript", 0, 0, 0, 0, 45, 0, 0, 10, 55
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\myvisits.html", "HTML", 0, 0, 0, 25, 0, 0, 0, 3, 28
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\myvisits.js", "JavaScript", 0, 0, 0, 0, 104, 0, 0, 27, 131
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\qrcheckin.html", "HTML", 0, 0, 0, 39, 0, 0, 0, 8, 47
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\qrcheckin.js", "JavaScript", 0, 0, 0, 0, 149, 0, 0, 31, 180
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\register.html", "HTML", 0, 0, 0, 33, 0, 0, 0, 9, 42
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\register.js", "JavaScript", 0, 0, 0, 0, 37, 0, 0, 7, 44
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\style.css", "PostCSS", 0, 0, 0, 0, 0, 1000, 21, 161, 1182
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\tourist.html", "HTML", 0, 0, 0, 40, 0, 0, 0, 8, 48
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\tourist.js", "JavaScript", 0, 0, 0, 0, 114, 0, 0, 28, 142
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\visit.html", "HTML", 0, 0, 0, 78, 0, 0, 0, 15, 93
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\public\visit.js", "JavaScript", 0, 0, 0, 0, 94, 0, 0, 20, 114
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\db.ts", "TypeScript", 11, 0, 0, 0, 0, 0, 0, 3, 14
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\initDb.ts", "TypeScript", 61, 0, 0, 0, 0, 0, 0, 7, 68
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\src\server.ts", "TypeScript", 418, 0, 0, 0, 0, 0, 18, 67, 503
+"c:\Users\prisc\OneDrive\Desktop\DomesticTouristPassport\tsconfig.json", "JSON with Comments", 0, 13, 0, 0, 0, 0, 0, 1, 14
+"Total", "-", 490, 13, 1430, 490, 1048, 1000, 42, 604, 5117
