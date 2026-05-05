@@ -41,65 +41,83 @@ let destinations = [
     id: 1,
     name: "Miss Shirley's Cafe",
     city: "Baltimore",
-    image: "images/miss-shirleys-cafe.jpg",
-    description: "Miss Shirley's Cafe offers guests an upscale-casual and exceptional award-winning culinary experience for all-day breakfast, brunch and lunch. Our specialties are rooted in Southern fundamentals and the abundance of fresh ingredients from Maryland. We pride ourselves in beautifully presented plates, prompt and professional service, as well as clean, comfortable and well-maintained premises for our guests.Located in Baltimore’s bustling Inner Harbor and thriving with Charm City energy, both locals and tourists alike enjoy the large outdoor patio, all glass Falls Room, and the inviting indoor dining rooms. A Leadership in Energy & Environmental Design (LEED) Platinum Property in Baltimore!"
+    state: "MD",
+    image: "/images/miss-shirleys-cafe.jpg",
+    description: "Miss Shirley's Cafe offers guests an upscale-casual and exceptional award-winning culinary experience for all-day breakfast, brunch and lunch. Our specialties are rooted in Southern fundamentals and the abundance of fresh ingredients from Maryland. We pride ourselves in beautifully presented plates, prompt and professional service, as well as clean, comfortable and well-maintained premises for our guests.Located in Baltimore’s bustling Inner Harbor and thriving with Charm City energy, both locals and tourists alike enjoy the large outdoor patio, all glass Falls Room, and the inviting indoor dining rooms. A Leadership in Energy & Environmental Design (LEED) Platinum Property in Baltimore!",
+    footprints: 50
   },
 
   {
     id: 2,
     name: "Maryland Zoo",
     city: "Baltimore",
-    image: "images/maryland-zoo.jpg",
-    description: "A popular family-friendly attraction featuring a wide range of animals and educational exhibits."
+    state: "MD",
+    image: "/images/maryland-zoo.jpg",
+    description: "A popular family-friendly attraction featuring a wide range of animals and educational exhibits.",
+    footprints: 50
   },
   {
     id: 3,
     name: "Everyman Theatre",
     city: "Baltimore",
-    image: "images/everyman-theatre.jpg",
-    description: "A well-known Baltimore theatre offering engaging live performances in a historic setting."
+    state: "MD",
+    image: "/images/everyman-theatre.jpg",
+    description: "A well-known Baltimore theatre offering engaging live performances in a historic setting.",
+    footprints: 50
   },
   {
     id: 4,
     name: "Walter's Museum of Art",
     city: "Baltimore",
-    image: "images/walters-museum.jpg",
-    description: "An art museum showcasing diverse collections and cultural exhibits in the heart of Baltimore."
+    state: "MD",
+    image: "/images/walters-museum.jpg",
+    description: "An art museum showcasing diverse collections and cultural exhibits in the heart of Baltimore.",
+    footprints: 50
   },
   {
     id: 5,
     name: "Baltimore Museum of Art",
     city: "Baltimore",
-    image: "images/baltimore-museum-of-art.jpg",
-    description: "A major cultural destination known for its art collections, exhibitions, and educational programs."
+    state: "MD",
+    image: "/images/baltimore-museum-of-art.jpg",
+    description: "A major cultural destination known for its art collections, exhibitions, and educational programs.",
+    footprints: 50
   },
   {
     id: 6,
     name: "Baltimore Museum of Industry",
     city: "Baltimore",
-    image: "images/baltimore-museum-of-industry.jpg",
-    description: "A museum preserving and presenting Baltimore’s industrial and manufacturing history."
+    state: "MD",
+    image: "/images/baltimore-museum-of-industry.jpg",
+    description: "A museum preserving and presenting Baltimore’s industrial and manufacturing history.",
+    footprints: 50
   },
   {
     id: 7,
     name: "Medieval Times",
     city: "Baltimore",
-    image: "images/medieval-times.jpg",
-    description: "A themed entertainment destination combining dining, live performances, and medieval-style competitions."
+    state: "MD",
+    image: "/images/medieval-times.jpg",
+    description: "A themed entertainment destination combining dining, live performances, and medieval-style competitions.",
+    footprints: 50
   },
   {
     id: 8,
     name: "Baltimore National Aquarium",
     city: "Baltimore",
-    image: "images/national-aquarium.jpg",
-    description: "A waterfront attraction featuring aquatic life exhibits and immersive marine experiences."
+    state: "MD",
+    image: "/images/national-aquarium.jpg",
+    description: "A waterfront attraction featuring aquatic life exhibits and immersive marine experiences.",
+    footprints: 50
   },
   {
     id: 9,
     name: "Maryland Science Center",
     city: "Baltimore",
-    image: "images/maryland-science-center.jpg",
-    description: "An interactive science attraction offering hands-on exhibits, learning experiences, and family activities."
+    state: "MD",
+    image: "/images/maryland-science-center.jpg",
+    description: "An interactive science attraction offering hands-on exhibits, learning experiences, and family activities.",
+    footprints: 50
   }
 ];
 
@@ -385,7 +403,7 @@ app.post("/api/visits", async (req, res) => {
       });
     }
 
-    const footprints = visitRating * 10;
+    const footprints = destination.footprints;
 
     const countResult = await pool.query(
       `SELECT COUNT(*)::int AS visitCount

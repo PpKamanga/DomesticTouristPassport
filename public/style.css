@@ -1180,3 +1180,149 @@ p {
   font-weight: bold;
   margin-top: 12px;
 }
+
+/* ADMIN DASHBOARD LAYOUT */
+
+.admin-dashboard-layout {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+  align-items: flex-start;
+}
+
+.destinations-section {
+  flex: 3;
+}
+
+.admin-overview-section {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* DESTINATION LIST */
+
+.admin-destinations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-destination-row {
+  background: white;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-destination-img {
+  width: 95px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.admin-destination-info {
+  flex: 1;
+}
+
+.admin-destination-info h3 {
+  margin: 0;
+  color: #2e7d32;
+}
+
+.admin-destination-info p {
+  margin-top: 5px;
+}
+
+/* BUTTON */
+
+.admin-destination-row button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 9px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.admin-destination-row button:hover {
+  background: #1b5e20;
+}
+
+/* SMALL OVERVIEW CARDS */
+
+.small-summary-card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.small-summary-card h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #2e7d32;
+}
+
+.small-summary-card p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+/* ===== ADMIN DESTINATION LIST (OVERRIDES) ===== */
+
+.admin-destination-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ddd;
+
+  /* remove old "card" look if it exists */
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.admin-destination-img {
+  width: 75px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.admin-destination-info {
+  flex: 1;
+}
+
+.admin-destination-info h3 {
+  margin: 0;
+  color: #2e7d32;
+}
+
+.admin-destination-info p {
+  margin: 4px 0 0;
+  color: #555;
+}
+
+.admin-footprints {
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.admin-destination-row button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}

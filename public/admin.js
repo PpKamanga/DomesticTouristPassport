@@ -18,185 +18,69 @@ function goHome() {
   window.location.href = "home.html";
 }
 
-function loadDestinationInsights() {
-  Promise.all([
-    fetch("/api/visits").then((res) => res.json()),
-    fetch("/api/destinations").then((res) => res.json())
-  ])
-    .then(([visitsData, destinations]) => {
-      const visits = visitsData.visits || [];
+async function loadAdminDestinations() {
+  const response = await fetch("/api/destinations");
+  const destinations = await response.json();
 
-      const destinationStats = {};
+  const list = document.getElementById("adminDestinationsList");
+  list.innerHTML = "";
 
-      destinations.forEach((destination) => {
-        destinationStats[destination.id] = {
-          id: destination.id,
-          name: destination.name,
-          visitCount: 0,
-          totalRating: 0,
-          ratingCount: 0,
-          averageRating: 0
-        };
-      });
+  destinations.forEach((destination) => {
+    const row = document.createElement("div");
+    row.className = "admin-destination-row";
 
-      visits.forEach((visit) => {
-        const stats = destinationStats[visit.destinationId];
-        if (!stats) return;
+    row.innerHTML = `
+      <img 
+        src="${destination.image}" 
+        alt="${destination.name}" 
+        class="admin-destination-img"
+      />
 
-        stats.visitCount += 1;
+      <div class="admin-destination-info">
+        <h3>${destination.name}</h3>
+        <p>${destination.city}, ${destination.state}</p>
+      </div>
 
-        if (visit.rating && visit.rating > 0) {
-          stats.totalRating += Number(visit.rating);
-          stats.ratingCount += 1;
-        }
-      });
+      <div class="admin-footprints">
+        ${destination.footprints} Footprints
+      </div>
 
-      Object.values(destinationStats).forEach((stats) => {
-        if (stats.ratingCount > 0) {
-          stats.averageRating = stats.totalRating / stats.ratingCount;
-        }
-      });
+      <button onclick="goToDestinationAnalytics(${destination.id})">
+        See Analytics
+      </button>
+    `;
 
-      const visitedDestinations = Object.values(destinationStats).filter(
-        (stats) => stats.visitCount > 0
-      );
-
-      const ratedDestinations = Object.values(destinationStats).filter(
-        (stats) => stats.ratingCount > 0
-      );
-
-      const mostVisited = visitedDestinations.length
-        ? visitedDestinations.reduce((max, current) =>
-            current.visitCount > max.visitCount ? current : max
-          )
-        : null;
-
-      const leastVisited = visitedDestinations.length
-        ? visitedDestinations.reduce((min, current) =>
-            current.visitCount < min.visitCount ? current : min
-          )
-        : null;
-
-      const bestRated = ratedDestinations.length
-        ? ratedDestinations.reduce((best, current) =>
-            current.averageRating > best.averageRating ? current : best
-          )
-        : null;
-
-      document.getElementById("mostVisitedDestination").textContent = mostVisited
-        ? `${mostVisited.name} (${mostVisited.visitCount} visits)`
-        : "No visits yet";
-
-      document.getElementById("leastVisitedDestination").textContent = leastVisited
-        ? `${leastVisited.name} (${leastVisited.visitCount} visits)`
-        : "No visits yet";
-
-      document.getElementById("bestRatedDestination").textContent = bestRated
-        ? `${bestRated.name} (${bestRated.averageRating.toFixed(1)}/5)`
-        : "No ratings yet";
-
-      document.getElementById("destinationRatingsTable").innerHTML =
-        Object.values(destinationStats)
-          .map(
-            (stats) => `
-              <tr>
-                <td>${stats.name}</td>
-                <td>${stats.visitCount}</td>
-                <td>${stats.ratingCount > 0 ? stats.averageRating.toFixed(1) : "No ratings"}</td>
-              </tr>
-            `
-          )
-          .join("");
-    })
-    .catch((error) => {
-      console.error("Error loading destination insights:", error);
-    });
+    list.appendChild(row);
+  });
 }
 
-function loadAnalytics() {
-  fetch(`/api/admin/analytics?role=${currentUser.role}`)
-    .then(res => res.json())
- .then(data => {
-  document.getElementById("adminTotalVisits").textContent = data.totalVisits;
-
-  document.getElementById("adminTotalFootprints").textContent = data.totalFootprints;
-
-  document.getElementById("adminAverageRating").textContent =
-    data.averageRating.toFixed(2);
-
-  document.getElementById("adminActiveUsers").textContent =
-    data.activeUsers;
-})
-.catch(error => {
-  console.error("Error loading analytics:", error);
-});
-}
-function loadComments() {
-  Promise.all([
-    fetch("/api/visits").then((res) => res.json()),
-    fetch("/api/destinations").then((res) => res.json())
-  ])
-    .then(([visitsData, destinations]) => {
-      console.log("All visits for comments:", visitsData.visits);
-      const commentsList = document.getElementById("adminCommentsList");
-  
-
-    const commentedVisits = visitsData.visits.filter(
-    (visit) =>
-    visit.comment &&
-    visit.comment.trim() !== "" &&
-    visit.comment !== "QR Check-In"
-);
-
-document.getElementById("adminCommentsCount").textContent = commentedVisits.length;
-
-  if (commentedVisits.length === 0) {
-  commentsList.innerHTML = `
-    <div class="summary-card">
-      <h3>No Comments Yet</h3>
-      <p>No tourist comments have been submitted yet.</p>
-    </div>
-  `;
-  return;
+function goToDestinationAnalytics(destinationId) {
+  window.location.href = `destinationanalytics.html?id=${destinationId}`;
 }
 
- commentsList.innerHTML = commentedVisits
-        .map((visit) => {
-          const destination = destinations.find(
-            (d) => d.id == visit.destinationId
-          );
+window.goToDestinationAnalytics = goToDestinationAnalytics;
 
-          const destinationName = destination
-            ? destination.name
-            : "Unknown Destination";
-      return`
-            <div class="summary-card">
-              <h3>${visit.username || "Tourist"}</h3>
-              <p><strong>Destination:</strong> ${destinationName}</p>
-              <p><strong>Rating:</strong> ${visit.rating}/5</p>
-              <p>${visit.comment}</p>
-            </div>
-          `;
-        })
-        
-        .join("");
-    })
-    .catch(error => {
-      console.error("Error loading comments:", error);
-    });
+async function loadAnalytics() {
+  const visitsResponse = await fetch("/api/visits");
+  const visitsData = await visitsResponse.json();
+
+  const destinationsResponse = await fetch("/api/destinations");
+  const destinations = await destinationsResponse.json();
+
+  const visits = visitsData.visits || [];
+
+  const users = new Set(
+    visits.map((visit) => visit.username).filter(Boolean)
+  );
+
+  document.getElementById("adminTotalUsers").textContent = users.size;
+  document.getElementById("adminTotalDestinations").textContent = destinations.length;
+  document.getElementById("adminTotalVisits").textContent = visits.length;
 }
 
-function toggleComments() {
-  const commentsSection = document.getElementById("commentsSection");
-
-  if (commentsSection.style.display === "none") {
-    commentsSection.style.display = "block";
-  } else {
-    commentsSection.style.display = "none";
-  }
-}
-
+window.logout = logout;
+window.goHome = goHome;
+window.goToDestinationAnalytics = goToDestinationAnalytics;
 
 loadAnalytics();
-loadComments();
-loadDestinationInsights();
+loadAdminDestinations();

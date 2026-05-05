@@ -18,73 +18,37 @@
     <h2 style="text-align: center;">Admin Dashboard</h2>
     <p>Welcome, Admin! Here you can view analytics about tourist visits and attractions.</p>
 
-    <div class="summary-cards">
-      <div class="summary-card">
-        <h3>Total Visits</h3>
-        <p id="adminTotalVisits">0</p>
+  <div class="admin-dashboard-layout">
+
+      <div class="destinations-section">
+        <h2>Destinations</h2>
+
+        <div id="adminDestinationsList"
+             class="admin-destinations-list">
+        </div>
       </div>
 
-      <div class="summary-card">
-        <h3>Total Footprints</h3>
-        <p id="adminTotalFootprints">0</p>
-      </div>
+      <div class="admin-overview-section">
+        <h2>Overview</h2>
 
-      <div class="summary-card">
-        <h3>Average Rating</h3>
-        <p id="adminAverageRating">0.00</p>
-      </div>
-
-        <div class="summary-card">
-          <h3>Active Users</h3>
-          <p id="adminActiveUsers">0</p>
+        <div class="small-summary-card">
+          <h3>Total Users</h3>
+          <p id="adminTotalUsers">0</p>
         </div>
 
-        <div class="summary-card" onclick="toggleComments()" style="cursor: pointer;">
-           <h3>Comments</h3>
-           <p id="adminCommentsCount">0</p>
+        <div class="small-summary-card">
+          <h3>Total Destinations</h3>
+          <p id="adminTotalDestinations">0</p>
+        </div>
+
+        <div class="small-summary-card">
+          <h3>Total Visits</h3>
+          <p id="adminTotalVisits">0</p>
+        </div>
       </div>
+
+    </div>
   </section>
-
-<section id="commentsSection" class="comment-section" style="display: none;">
-  <h2 style="text-align:center;">Tourist Comments</h2>
-  <div id="adminCommentsList" class="summary-cards"></div>
-</section>
-
-<section class="admin-insights-section">
-  <h2 style="text-align:center;">Destination Insights</h2>
-
-  <div class="summary-cards">
-    <div class="summary-card">
-      <h3>Most Visited Destination</h3>
-      <p id="mostVisitedDestination">Loading...</p>
-    </div>
-
-    <div class="summary-card">
-      <h3>Least Visited Destination</h3>
-      <p id="leastVisitedDestination">Loading...</p>
-    </div>
-
-    <div class="summary-card">
-      <h3>Best Rated Destination</h3>
-      <p id="bestRatedDestination">Loading...</p>
-    </div>
-  </div>
-
-  <div class="ratings-table-wrapper">
-    <h3 style="text-align:center;">Average Rating Per Destination</h3>
-
-    <table class="ratings-table">
-      <thead>
-        <tr>
-          <th>Destination</th>
-          <th>Total Visits</th>
-          <th>Average Rating</th>
-        </tr>
-      </thead>
-      <tbody id="destinationRatingsTable"></tbody>
-    </table>
-  </div>
-</section>
 
     <script src="admin.js"></script>
   </body>
