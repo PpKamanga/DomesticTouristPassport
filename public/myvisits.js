@@ -63,6 +63,32 @@ async function loadMyVisits() {
       (visit) => visit.username === currentUser.username
     );
 
+    const totalFootprints = myVisits.reduce(
+  (sum, visit) => sum + Number(visit.footprints || 0),
+  0
+);
+
+document.getElementById("passportUserName").textContent =
+  currentUser.username;
+
+document.getElementById("passportFootprints").textContent =
+  `${totalFootprints} Footprints`;
+
+document.getElementById("totalVisitsCount").textContent =
+  myVisits.length;
+
+const uniqueDestinations = new Set(
+  myVisits.map((visit) => visit.destinationId)
+);
+
+document.getElementById("destinationsVisitedCount").textContent =
+  uniqueDestinations.size;
+
+const latestVisit = myVisits[0];
+
+document.getElementById("passportBadge").textContent =
+  latestVisit ? latestVisit.badge : "No Badge Yet";
+
     if (myVisits.length === 0) {
       container.innerHTML = "<p>You have not recorded any visits yet.</p>";
       return;

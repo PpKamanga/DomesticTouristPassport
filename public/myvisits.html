@@ -6,7 +6,18 @@
   </head>
   <body>
     <div class="top-bar">
+
+        <div class="header-logo-section">
+
+    <img
+      src="/images/dtp logo.png"
+      alt="DTP Logo"
+      class="header-logo"
+    />
+
       <h1>My Visits</h1>
+
+    </div> 
 
       <div class="top-right">
         <button onclick="goBack()">Back</button>
@@ -17,12 +28,72 @@
       </div>
     </div>
 
+    <h2 class="passport-section-title">
+       My Domestic Tourist Passport
+    </h2>
+     
+     <div class="passport-dashboard-layout">
+
+     <div class="passport-card">
+
+      <div class="passport-card-header">
+
+        <div class="passport-user">
+          <h2 id="passportUserName">Priscilla Kamanga</h2>
+        </div>
+
+        <div class="passport-badge">
+          <p id="passportBadge">Charm City</p>
+        </div>
+
+      </div>
+
+      <div class="passport-logo-area">
+
+        <img
+          src="/images/dtp logo.png"
+          alt="DTP Logo"
+          class="passport-logo"
+        />
+
+      </div>
+
+      <div class="passport-footer">
+        <p id="passportFootprints">0 Footprints</p>
+      </div>
+
+    </div>
+
+    <div class="tourist-analytics-section">
+     <h2 class="tourist-analytics-title">
+    Tourist Analytics
+    </h2>
+
+     <div class="passport-stats">
+
+    <div class="passport-stat-card">
+      <h3>Total Visits</h3>
+      <p id="totalVisitsCount">0</p>
+    </div>
+
+    <div class="passport-stat-card">
+      <h3>Destinations Visited</h3>
+      <p id="destinationsVisitedCount">0</p>
+    </div>
+
+  </div>
+
+</div>
+
+ </div>
+
     <h2 style="text-align:center; margin-top: 30px;">Your Recorded Visits</h2>
      
     <div class="visit-page">
          <div id="myVisitsContainer" class="visits-grid"></div>
     </div>
-    </section>
+
+  
     <script src="myvisits.js"></script>
   </body>
 </html>
