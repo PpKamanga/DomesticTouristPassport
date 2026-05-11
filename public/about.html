@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About - Domestic Tourist Passport</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+    <div class="top-bar">
+
+      <div class="header-logo-section">
+
+        <img
+          src="images/dtp logo.png"
+          alt="DTP Logo"
+          class="header-logo"
+        />
+
+        <h1>About</h1>
+
+      </div>
+
+      <div class="top-right">
+        <button onclick="goHome()">Home</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+    </div>
+
+    <div class="destination-page about-page">
+
+      <img
+        src="images/dtp logo.png"
+        alt="DTP Logo"
+        class="about-logo"
+      />
+
+      <h2>About Domestic Tourist Passport</h2>
+
+      <p>
+        The Domestic Tourist Passport is a tourism engagement platform designed
+        to help tourists explore local attractions, record visits, and earn
+        reward points called Footprints.
+      </p>
+
+      <p>
+        The system encourages visitors to discover destinations while also
+        helping tourism administrators understand visitor activity,
+        destination engagement, and tourist feedback.
+      </p>
+
+      <p>
+        Tourists can browse attractions, view destination details, record
+        visits, complete feedback surveys, and track their progress through
+        a digital passport experience.
+      </p>
+
+      <p>
+        Administrators can review destination activity and use analytics to
+        support better tourism planning, marketing, and visitor experience
+        improvements.
+      </p>
+
+    </div>
+
+    <script>
+      function goHome() {
+        window.location.href = "home.html";
+      }
+
+      function logout() {
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html";
+      }
+    </script>
+
+  </body>
+</html>

@@ -26,6 +26,8 @@ async function loadAdminDestinations() {
   list.innerHTML = "";
 
   destinations.forEach((destination) => {
+    console.log(destination.image);
+    
     const row = document.createElement("div");
     row.className = "admin-destination-row";
 
