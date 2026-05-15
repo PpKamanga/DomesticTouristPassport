@@ -1,23 +1,32 @@
+<!-- Main layout for the destination analytics page -->
 <div class="analytics-layout">
 
   <!-- LEFT SIDE (CHART) -->
   <div class="analytics-main">
     <h2>Visits Overview</h2>
 
-   <canvas id="visitsChart"></canvas>
+   <!-- Chart.js canvas used to display visit analytics -->
+    <canvas id="visitsChart"></canvas>
   </div>
 
   <!-- RIGHT SIDE (METRICS) -->
   <div class="analytics-side">
     <h2>Key Metrics</h2>
 
+     <!-- Displays total visits for different time periods -->
     <p><strong>Daily:</strong> <span id="dailyVisits">0</span></p>
     <p><strong>Weekly:</strong> <span id="weeklyVisits">0</span></p>
     <p><strong>Annual:</strong> <span id="annualVisits">0</span></p>
+
+      <!-- Displays Footprints earned per visit and total Footprints -->
     <p><strong>Footprints:</strong> <span id="footprintsPerVisit">0</span></p>
     <p><strong>Total Footprints:</strong> <span id="totalFootprints">0</span></p>
   </div>
 
 </div>
+
+<!-- Chart.js library used to create the visits overview chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JavaScript file that loads and displays destination analytics -->
 <script src="destinationanalytics.js"></script>

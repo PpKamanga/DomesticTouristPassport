@@ -2,45 +2,69 @@
 <html>
   <head>
     <title>Admin Dashboard - Domestic Tourist Passport</title>
+
+    <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="top-bar">
-    <h1>Domestic Tourist Passport</h1>
 
+      <!-- Top navigation bar -->
+    <div class="top-bar">
+
+    <!-- Application title -->
+    <h1>Domestic Tourist Passport</h1>
+     
+    <!-- User information and logout section -->
     <div class="top-right">
+
+    <!-- Displays the currently logged-in admin -->
     <p id="userInfo"></p>
+
+     <!-- Logout button -->
     <button onclick="logout()">Logout</button>
     </div>
   </div>
-
+  
+  <!-- Main dashboard section -->
   <section class="dashboard-summary">
+
+    <!-- Dashboard heading -->
     <h2 style="text-align: center;">Admin Dashboard</h2>
+
+    <!-- Dashboard introduction message -->
     <p>Welcome, Admin! Here you can view analytics about tourist visits and attractions.</p>
-
+   
+  <!-- Main admin dashboard layout -->
   <div class="admin-dashboard-layout">
-
+      
+      <!-- Section displaying destination cards -->
       <div class="destinations-section">
         <h2>Destinations</h2>
-
+        
+         <!-- Container where destination cards will be dynamically loaded -->
         <div id="adminDestinationsList"
              class="admin-destinations-list">
         </div>
       </div>
-
+       
+        <!-- Section displaying summary analytics -->
       <div class="admin-overview-section">
+
         <h2>Overview</h2>
 
+        <!-- Displays total number of users -->
         <div class="small-summary-card">
           <h3>Total Users</h3>
           <p id="adminTotalUsers">0</p>
         </div>
 
+          <!-- Displays total number of destinations -->  
         <div class="small-summary-card">
           <h3>Total Destinations</h3>
           <p id="adminTotalDestinations">0</p>
         </div>
-
+       
+          <!-- Displays total number of visits -->
         <div class="small-summary-card">
           <h3>Total Visits</h3>
           <p id="adminTotalVisits">0</p>
@@ -50,6 +74,7 @@
     </div>
   </section>
 
+    <!-- External JavaScript file for admin dashboard functionality -->
     <script src="admin.js"></script>
   </body>
 </html>

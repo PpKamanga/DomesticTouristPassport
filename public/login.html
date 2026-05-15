@@ -2,40 +2,55 @@
 <html>
   <head>
     <title>Login - Domestic Tourist Passport</title>
+
+      <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
 <body class="page-background">
 
+   <!-- Main login page wrapper -->
   <div class="login-wrapper">
+
+     <!-- Login card container -->
     <div class="login-container">
 
-
-    <img src="images/dtp logo.png" 
+         <!-- Application logo displayed on the login page -->
+      <img src="images/dtp logo.png" 
          alt="Domestic Tourist Passport Logo" 
          class="login-badge-logo" 
          />
 
-   <div class="login-body">
+         <!-- Login form content -->
+         <div class="login-body">
+
+           <!-- Login page heading -->
           <h2>Domestic Tourist Passport Login</h2>
     
-    <form id="loginForm">
+            <!-- Login form with email and password fields -->
+      <form id="loginForm">
+
+        <!-- Email input field --> 
       <label for="email">Email:</label>
       <input type="email" id="email" placeholder="Enter your email" required />
 
+      <!-- Password input field -->
       <label for="password">Password:</label>
       <input type="password" id="password" placeholder="Enter your password" required />
 
-
+      <!-- Login button -->
       <button type="submit">Login</button>
     </form>
 
+    <!-- Area for displaying login success or error messages -->
     <p id="loginMessage"></p>
 
-       <p class="register-text">
+     <!-- Link to the account registration page -->  
+    <p class="register-text">
             Don’t have an account?
             <a href="register.html">Create Account</a>
           </p>
 
+         <!-- Link to the admin login page -->
         <p class="admin-login">
            Admin? Log in with your admin credentials.
       </p>  
@@ -43,6 +58,7 @@
       </div>
     </div>
 
+      <!-- JavaScript file that handles login functionality -->
     <script src="login.js"></script>
   </body>
 </html>

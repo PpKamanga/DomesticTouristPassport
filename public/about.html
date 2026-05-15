@@ -2,13 +2,17 @@
 <html>
   <head>
     <title>About - Domestic Tourist Passport</title>
+
+    <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
 
+    <!-- Top navigation bar -->
     <div class="top-bar">
-
+      
+       <!-- Logo and page title section -->
       <div class="header-logo-section">
 
         <img
@@ -20,14 +24,16 @@
         <h1>About</h1>
 
       </div>
-
+      
+      <!-- Navigation buttons -->
       <div class="top-right">
         <button onclick="goHome()">Home</button>
         <button onclick="logout()">Logout</button>
       </div>
 
     </div>
-
+    
+    <!-- Main About page content -->
     <div class="destination-page about-page">
 
       <img
@@ -37,25 +43,29 @@
       />
 
       <h2>About Domestic Tourist Passport</h2>
-
+      
+      <!-- Introduction to the platform -->
       <p>
         The Domestic Tourist Passport is a tourism engagement platform designed
         to help tourists explore local attractions, record visits, and earn
         reward points called Footprints.
       </p>
-
+      
+      <!-- Explains the purpose of the system -->
       <p>
         The system encourages visitors to discover destinations while also
         helping tourism administrators understand visitor activity,
         destination engagement, and tourist feedback.
       </p>
-
+       
+      <!-- Features available to tourists -->
       <p>
         Tourists can browse attractions, view destination details, record
         visits, complete feedback surveys, and track their progress through
         a digital passport experience.
       </p>
-
+       
+        <!-- Benefits for tourism administrators -->
       <p>
         Administrators can review destination activity and use analytics to
         support better tourism planning, marketing, and visitor experience
@@ -65,10 +75,13 @@
     </div>
 
     <script>
+
+      // Redirects the user to the home page
       function goHome() {
         window.location.href = "home.html";
       }
-
+      
+      // Logs the user out and redirects to the login page
       function logout() {
         localStorage.removeItem("currentUser");
         window.location.href = "login.html";

@@ -2,23 +2,36 @@
 <html>
   <head>
     <title>Your Feedback History</title>
+
+     <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="page-background">
-    <div class="top-bar">
-      <h1>Your Feedback History</h1>
 
+      <!-- Top navigation bar -->
+    <div class="top-bar">
+
+      <!-- Page title -->
+      <h1>Your Feedback History</h1>
+      
+
+      <!-- Navigation buttons -->
       <div class="top-right">
         <button onclick="goHome()">Home</button>
         <button onclick="goBack()">Back</button>
         <button onclick="logout()">Logout</button>
       </div>
     </div>
-
+    
+    <!-- Section where the user's feedback history will be displayed -->
     <section class="comments-section">
+
+        <!-- Feedback records are loaded here dynamically using JavaScript -->
       <div id="feedbackContainer"></div>
     </section>
+    
 
+     <!-- JavaScript file that loads and displays feedback history -->
     <script src="feedback.js"></script>
   </body>
 </html>

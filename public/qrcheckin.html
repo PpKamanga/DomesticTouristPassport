@@ -2,15 +2,22 @@
 <html>
   <head>
     <title>QR Check-In</title>
+
+      <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="page-background">
+
+    <!-- Top navigation bar -->
     <div class="top-bar">
+
+      <!-- Clickable logo and page title section -->
        <div class="logo-title" onclick="window.location.href='tourist.html'" style="cursor:pointer;">
        <img src="images/dtp logo.png" class="logo" />
       <h1>QR Check-In</h1>
       </div>
 
+      <!-- Navigation buttons -->
       <div class="top-right">
         <button onclick="goBack()">Back</button>
         <button onclick="goHome()">Home</button>
@@ -20,20 +27,30 @@
       </div>
     </div>
 
-     <section class="qr-page">
+     <!-- Main QR check-in section -->
+    <section class="qr-page">
+
+       <!-- Card containing QR scanner instructions and controls -->
       <div class="qr-card">
+
+
         <h2>Scan Destination QR Code</h2>
+
+          <!-- Instructions for using the QR scanner -->
         <p class="qr-subtext">
           Allow camera access and scan the QR code at the destination.
         </p>
 
+         <!-- Buttons used to start and stop the QR scanner -->
         <div class="qr-actions">
           <button id="startScannerBtn">Open Camera</button>
           <button id="stopScannerBtn" type="button">Stop Camera</button>
         </div>
 
+        <!-- QR scanner camera preview is displayed here -->
         <div id="reader"></div>
 
+   <!-- Area for displaying QR scan messages -->
     <div style="text-align:center; margin-top:50px;">
     <h2>Scan QR Code</h2>
 
@@ -41,7 +58,10 @@
     <p id="qrMessage" class="qr-message"></p>
   </div>
 
-    <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <!-- External QR code scanning library -->
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+
+  <!-- JavaScript file that controls QR check-in functionality -->
     <script src="qrcheckin.js" defer></script>
   </body>
 </html>

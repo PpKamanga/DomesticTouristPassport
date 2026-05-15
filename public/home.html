@@ -2,27 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Makes the page responsive on different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domestic Tourist Passport - Home</title>
+
+    <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="home-page page-background">
+
+      <!-- Main layout container for the home page -->
     <div class="home-layout">
       
-      
+       <!-- Sidebar containing branding, welcome message, and navigation cards -->
       <aside class="home-sidebar">
         <div>
+
+           <!-- Application name and short description -->
             <div class="sidebar-brand">
               <h1>Domestic Tourist Passport</h1>
             <p>Explore attractions, record visits, and earn footprints.</p>
           </div>
 
+          <!-- Personalized welcome section -->
           <div class="welcome-box">
             <h2 id="welcomeMessage">Welcome</h2>
             <p>Your Baltimore experience starts here.</p>
           </div>
 
+           <!-- Navigation cards linking to the main tourist features -->
           <div class="nav-card-list">
+
+             <!-- Link to destination browsing page -->
             <a href="tourist.html" class="nav-card primary-card">
               <div>
                 <h3>View Destinations</h3>
@@ -30,6 +42,7 @@
               </div>
             </a>
 
+            <!-- Link to QR check-in page -->
             <a href="qrcheckin.html" class="nav-card">
               <div>
                 <h3>QR Check-In</h3>
@@ -37,6 +50,7 @@
               </div>
             </a>
 
+              <!-- Link to visit recording page -->
             <a href="visit.html" class="nav-card">
               <div>
                 <h3>Record a Visit</h3>
@@ -44,13 +58,16 @@
               </div>
             </a>
 
-            <a href="myvisits.html" class="nav-card">
+              <!-- Link to visit history page -->
+           <a href="myvisits.html" class="nav-card">
               <div>
                 <h3>Visit History</h3>
                 <p>Review your past visits and activity.</p>
               </div>
             </a>
 
+            
+            <!-- Link to about page -->
             <a href="about.html" class="nav-card">
               <div>
                 <h3>About</h3>
@@ -60,14 +77,20 @@
           </div>
         </div>
 
+        <!-- Logout action at the bottom of the sidebar -->
         <div class="sidebar-actions">
           <button onclick="logout()" class="logout-btn">Logout</button>
         </div>
       </aside>
 
+      <!-- Hero section displaying Baltimore image and promotional message -->
       <section class="home-hero">
+
+
+        <!-- Main hero image -->
         <img src="images/baltimorecity.jpg" alt="Baltimore City" class="home-hero-image" />
 
+         <!-- Overlay text displayed on top of the hero image -->
         <div class="hero-overlay">
           <div class="hero-content">
             <p class="hero-small">Baltimore</p>
@@ -82,6 +105,7 @@
 
     </div>    
 
+    <!-- JavaScript file for home page user display and logout functionality -->
     <script src="home.js"></script>
   </body>
 </html>

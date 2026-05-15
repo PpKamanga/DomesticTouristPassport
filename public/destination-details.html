@@ -2,16 +2,23 @@
 <html>
   <head>
     <title>Destination Details</title>
+
+    <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
+      <!-- Top navigation bar -->
     <div class="top-bar">
+
+      <!-- Clickable logo and page title section -->
         <div class="logo-title" onclick="window.location.href='tourist.html'" style="cursor:pointer;">
           <img src="images/dtp logo.png" class="logo" />
           <h1>Destination Details</h1>
         </div>
 
-      <div class="top-right">
+      <!-- Navigation buttons for the tourist pages -->
+        <div class="top-right">
         <button onclick="goBack()">Back</button>
         <button onclick="goHome()">Home</button>
         <button onclick="goToQRPage()">QR Check-In</button>
@@ -20,18 +27,28 @@
       </div>
     </div>
 
+    <!-- Main destination details page content -->
     <div class="destination-card-page">
+
+       <!-- Card displaying selected destination information -->
       <div class="destination-card">
+
+         <!-- Destination image loaded dynamically from JavaScript -->
         <img id="image" class="hero-image" src="" alt="Destination Image" />
+
+        <!-- Destination name, location, and description loaded dynamically -->
           <h2 id="name"></h2>
           <p id="city"></p>
           <p id="description"></p>
         
-      
+          <!-- Button to record a visit to the destination -->
         <button id="recordVisitBtn">Record Visit</button>
       </div>
     </div>
 
+    <!-- JavaScript file that loads destination details and handles page actions -->
     <script src="destination-details.js"></script>
+
+    
   </body>
 </html>

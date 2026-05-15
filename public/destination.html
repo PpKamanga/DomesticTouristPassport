@@ -2,12 +2,16 @@
 <html>
   <head>
     <title>Destination Details</title>
+
+     <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
 
+     <!-- Top navigation bar -->
     <div class="top-bar">
 
+      <!-- Logo and page title section -->
       <div class="header-logo-section">
 
      <img
@@ -18,6 +22,7 @@
       <h1>Destination Details</h1>
       </div>
 
+      <!-- Navigation buttons for tourist actions -->
       <div class="top-right">
         <button onclick="goBack()">Back</button>
         <button onclick="goHome()">Home</button>
@@ -28,15 +33,21 @@
       </div>
     </div>
 
+    <!-- Main destination details section -->
     <div class="destination-page">
+
+      <!-- Destination image loaded dynamically with JavaScript -->
       <img id="destinationImage" />
 
+       <!-- Destination name and city loaded dynamically with JavaScript -->
       <h2 id="destinationName"></h2>
       <p id="destinationCity"></p>
 
+     <!-- Button that sends the user to the visit recording page -->
       <button onclick="goToVisit()">Record Visit</button>
     </div>
 
+     <!-- JavaScript file for loading destination information and page navigation -->
     <script src="destination.js"></script>
   </body>
 </html>

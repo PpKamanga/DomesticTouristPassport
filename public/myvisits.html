@@ -2,12 +2,17 @@
 <html>
   <head>
     <title>My Visits</title>
+
+      <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
+        <!-- Top navigation bar with logo and page title -->
     <div class="top-bar">
 
-        <div class="header-logo-section">
+      <!-- Logo and page title section -->
+      <div class="header-logo-section">
 
     <img
       src="/images/dtp logo.png"
@@ -19,7 +24,8 @@
 
     </div> 
 
-      <div class="top-right">
+      <!-- Navigation buttons -->
+    <div class="top-right">
         <button onclick="goBack()">Back</button>
         <button onclick="goHome()">Home</button>
         <button onclick="goToVisitPage()">Record Visit</button>
@@ -28,26 +34,32 @@
       </div>
     </div>
 
+     <!-- Main passport section heading -->
     <h2 class="passport-section-title">
        My Domestic Tourist Passport
     </h2>
      
-     <div class="passport-dashboard-layout">
+      <!-- Layout containing passport card and tourist analytics -->
+    <div class="passport-dashboard-layout">
 
-     <div class="passport-card">
+      <!-- Digital tourist passport card -->
+      <div class="passport-card">
 
-      <div class="passport-card-header">
+      <!-- Passport header displaying user name and badge -->
+        <div class="passport-card-header">
 
         <div class="passport-user">
           <h2 id="passportUserName">Priscilla Kamanga</h2>
         </div>
 
+         <!-- Displays the tourist badge level -->
         <div class="passport-badge">
           <p id="passportBadge">Charm City</p>
         </div>
 
       </div>
 
+      <!-- Passport logo section -->
       <div class="passport-logo-area">
 
         <img
@@ -58,20 +70,25 @@
 
       </div>
 
+      <!-- Displays the tourist's total earned footprints -->
       <div class="passport-footer">
         <p id="passportFootprints">0 Footprints</p>
       </div>
 
     </div>
 
+     <!-- Tourist analytics section -->
     <div class="tourist-analytics-section">
+
      <h2 class="tourist-analytics-title">
     Tourist Analytics
     </h2>
 
-     <div class="passport-stats">
+    <!-- Dashboard cards showing tourist statistics --> 
+    <div class="passport-stats">
 
-    <div class="passport-stat-card">
+    <!-- Number of unique destinations visited -->
+      <div class="passport-stat-card">
       <h3>Total Visits</h3>
       <p id="totalVisitsCount">0</p>
     </div>
@@ -87,13 +104,17 @@
 
  </div>
 
-    <h2 style="text-align:center; margin-top: 30px;">Your Recorded Visits</h2>
+    <!-- Section heading for recorded visits --> 
+ <h2 style="text-align:center; margin-top: 30px;">Your Recorded Visits</h2>
      
+    <!-- Container for displaying the user's visit history -->
     <div class="visit-page">
+
+      <!-- Visit cards are loaded dynamically using JavaScript -->
          <div id="myVisitsContainer" class="visits-grid"></div>
     </div>
 
-  
+      <!-- JavaScript file that loads visit history and tourist analytics -->
     <script src="myvisits.js"></script>
   </body>
 </html>

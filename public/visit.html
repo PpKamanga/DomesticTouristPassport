@@ -2,16 +2,23 @@
 <html>
   <head>
     <title>Record Visit</title>
+
+      <!-- Main stylesheet for the application -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="page-background">
 
+    <!-- Top navigation bar -->
     <div class="top-bar">
+
+        <!-- Clickable logo and page title section -->
+          <div class="logo-title
        <div class="logo-title" onclick="window.location.href='tourist.html'" style="cursor:pointer;">
         <img src="images/dtp logo.png" class="logo" />
       <h1>Record a Visit</h1>
       </div>
 
+      <!-- Navigation buttons -->
       <div class="top-right">
         <button onclick="goBack()">Back</button>
         <button onclick="goHome()">Home</button>
@@ -21,16 +28,22 @@
       </div>
     </div>
 
-   <div class="visit-container">
+   <!-- Main form container for submitting a visit -->
+    <div class="visit-container">
   <h2>Submit Your Visit</h2>
 
+<!-- Visit submission form -->
   <form id="visitForm">
+
+    <!-- Destination dropdown loaded dynamically using JavaScript -->
     <label for="destinationId">Destination:</label>
     <select id="destinationId" required></select>
 
+     <!-- Overall rating input -->
     <label for="rating">Rating (1-5):</label>
     <input type="number" id="rating" min="1" max="5" required />
 
+    <!-- Cleanliness feedback question -->
     <label for="cleanliness">Cleanliness of the attraction:</label>
     <select id="cleanliness" required>
       <option value="">Select</option>
@@ -40,6 +53,8 @@
       <option value="Poor">Poor</option>
     </select>
 
+    
+    <!-- Safety feedback question -->
     <label for="safety">Did you feel safe during your visit?</label>
     <select id="safety" required>
       <option value="">Select</option>
@@ -48,6 +63,7 @@
       <option value="No">No</option>
     </select>
 
+    <!-- Accessibility feedback question -->
     <label for="accessibility">Accessibility (transport, signage, ease of entry):</label>
     <select id="accessibility" required>
       <option value="">Select</option>
@@ -56,6 +72,8 @@
       <option value="Not Accessible">Not Accessible</option>
     </select>
 
+    
+    <!-- Staff service quality feedback question -->
     <label for="staff">Staff service quality (if applicable):</label>
     <select id="staff" required>
      <option value="">Select</option>
@@ -65,6 +83,7 @@
      <option value="Not Applicable">Not Applicable</option>
    </select>
 
+   <!-- Value feedback question -->
    <label for="value">Was the experience worth the cost?</label>
    <select id="value" required>
     <option value="">Select</option>
@@ -72,6 +91,7 @@
     <option value="No">No</option>
    </select>
 
+  <!-- Recommendation feedback question -->
   <label for="recommend">Would you recommend this attraction?</label>
   <select id="recommend" required>
     <option value="">Select</option>
@@ -79,15 +99,19 @@
     <option value="No">No</option>
 </select>
 
+  <!-- Comment feedback question -->
   <label for="comment">Comment:</label>
   <input type="text" id="comment" />
 
+  <!-- Submit button for saving the visit record -->
   <button type="submit">Submit Visit</button>
  </form>
 
-  <p id="message"></p>
+ <!-- Area for displaying visit submission messages -->
+ <p id="message"></p>
 </div>
 
-    <script src="visit.js"></script>
+  <!-- JavaScript file that handles visit form loading and submission -->  
+<script src="visit.js"></script>
   </body>
 </html>

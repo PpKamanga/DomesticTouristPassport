@@ -1,27 +1,35 @@
+// Confirms that the destination details JavaScript file has loaded successfully
 console.log("destination-details.js loaded");
 
+// Retrieves the currently logged-in user from local storage
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+// Prevents users who are not logged in as tourists from accessing this page
 if (!currentUser || currentUser.role !== "tourist") {
   window.location.href = "login.html";
 }
 
+// Logs the current user out and redirects them to the login page
 function logout() {
   localStorage.removeItem("currentUser");
   window.location.href = "login.html";
 }
 
+// Redirects the user to the My Visits page
 function goToMyVisitsPage() {
   window.location.href = "myvisits.html";
 }
 
+// Redirects the user to the QR Check-In page
 function goToQRPage() {
   window.location.href = "qrcheckin.html";
 }
+// Redirects the user to the home page
 function goHome() {
   window.location.href = "home.html";
 }
 
+// Sends the user back to the previous page or home page if no previous page exists
 function goBack() {
   if (document.referrer && document.referrer !== "") {
     window.history.back();
@@ -30,6 +38,7 @@ function goBack() {
   }
 }
 
+// Stores local image paths for each destination
   const destinationImages = {
   "Miss Shirley's Cafe": "/images/miss shirleys cafe.jpg",
   "Baltimore National Aquarium": "/images/baltimore national aquarium.jpg",
@@ -42,6 +51,7 @@ function goBack() {
   "Medieval Times": "/images/medieval times.avif"
 };
 
+// Stores detailed descriptions and external links for each destination
 const destinationDescriptions = {
   "Miss Shirley's Cafe": `Miss Shirley's Cafe is a beloved local eatery in Baltimore, known for its delicious breakfast and brunch offerings, including signature dishes like the Miss Shirley's Chicken and Waffles.
   Miss Shirley's Cafe offers guests an upscale-casual and exceptional award-winning culinary experience for all-day breakfast, brunch and lunch. Our specialties are rooted in Southern fundamentals and the abundance of fresh ingredients from Maryland. We pride ourselves in beautifully presented plates, prompt and professional service, as well as clean, comfortable and well-maintained premises for our guests.
@@ -225,28 +235,36 @@ const params = new URLSearchParams(window.location.search);
 const destinationId = Number(params.get("destinationId"));
 console.log("Destination ID from URL:", destinationId);
 
+// Fetches destination data from the backend API
 fetch("/api/destinations")
   .then((res) => res.json())
   .then((data) => {
     console.log("Destinations data:", data);
 
+    // Finds the destination that matches the ID from the URL
     const destination = data.find((d) => d.id == destinationId);
 
+     // Displays an error message if the destination cannot be found
     if (!destination) {
       document.getElementById("name").textContent = "Destination not found";
       return;
     }
     
-// Populate the page with destination details
+    // Cleans the destination name so it can match the image and description objects
     const cleanName = (destination.name || "").trim();
+
     console.log("Destination name:", cleanName);
 
+    // Populates the page with the selected destination's details
     document.getElementById("name").textContent = destination.name;
     document.getElementById("city").textContent = destination.city || "";
+
+      // Adds the full destination description to the page
     document.getElementById("description").innerHTML = 
     destinationDescriptions[cleanName] || 
     "No description available.";
 
+      // Selects the correct destination image or uses a default image if none is found
     const imageUrl =
       destinationImages[cleanName] ||
       "/images/default.jpg";
@@ -256,6 +274,7 @@ fetch("/api/destinations")
 
     const imageEl = document.getElementById("image");
 
+     // Loads the destination image and provides console messages for debugging
     if (imageEl) {
     imageEl.onload = () => {
       console.log("Image loaded successfully:", imageUrl);
@@ -269,7 +288,7 @@ fetch("/api/destinations")
     imageEl.alt = cleanName;
   }
 
-    // Add event listener to the "Record Visit" button
+    // Sends the tourist to the visit recording page for this destination
     document
       .getElementById("recordVisitBtn")
       .addEventListener("click", () => {
